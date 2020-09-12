@@ -1,1 +1,3 @@
 # GAM100-MASTERCOPY
+
+Jinseok Son
