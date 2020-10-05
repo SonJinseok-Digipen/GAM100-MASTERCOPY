@@ -1,12 +1,17 @@
 class Player{
   constructor(){
     this.player_x = width / 2;
-    this.player_y = height - 40;
-    this.map_boundary_x = width - 40;
-    this.map_boundary_y = height - height / 4;
-    this.player_size = 40;
-    this.player_xspeed = 40;
-    this.player_yspeed = 40;
+    this.player_y = height - 15;
+    this.map_boundary_x = width - 15;
+    this.map_boundary_y = height - 135;
+    this.player_size = 30;
+    this.player_xspeed = 10;
+    this.player_yspeed = 10;
+    this.player_acceleration = 0;
+    this.player_attack_x = this.player_x - 7.5;
+    this.player_attack_y = this.player_y - 85;
+    this.player_attack_width = 15;
+    this.player_attack_height = 45;
   }
   
   update(){
@@ -16,7 +21,7 @@ class Player{
       {
         this.player_x += this.player_xspeed;
       }
-     if(keyCode == LEFT_ARROW && this.player_x > 0)
+     if(keyCode == LEFT_ARROW && this.player_x > 15)
       {
         this.player_x -= this.player_xspeed;
       }
@@ -24,13 +29,17 @@ class Player{
       {
         this.player_y -= this.player_yspeed;
       }
-      if(keyCode == DOWN_ARROW && this.player_y < height - 40)
+      if(keyCode == DOWN_ARROW && this.player_y < height - 15)
       {
         this.player_y += this.player_yspeed;
       }
       if(key == 'c' || key == 'C' || key == 'x' || key == 'X')
       {
        //Fire bullets
+        if(this.player_attack_y >= 0){
+          this.player_attack_y -= 50;
+        }
+        
       }
     }
   }
@@ -38,7 +47,8 @@ class Player{
   draw(){
     push()
     fill('gold');
-    square(this.player_x, this.player_y, this.player_size);
+    circle(this.player_x, this.player_y, this.player_size);
+    rect(this.player_attack_x, this.player_attack_y, this.player_attack_width, this.player_attack_height);
     pop()
   }
 }
