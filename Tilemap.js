@@ -7,11 +7,13 @@ class Mushroom_tilemap
 
  constructor()
  {
+    this.xcordinate=0;
+    this.ycordinate=0;
     this.rows=30;
     this.cols=30;
     this.tilesize=25;
     this.layers=[];
-}
+ }
  
  Initialize()
  {
@@ -23,7 +25,7 @@ class Mushroom_tilemap
     {
       this.layers[i][j]=0;
     }
-  }
+     }
 
  
   for(let i=0; i<32; i++)
@@ -40,12 +42,10 @@ class Mushroom_tilemap
       this.layers[i][j]=0;
     }
   }
- 
- 
-}
- 
 
- 
+  }
+    
+  
  }
 
 
