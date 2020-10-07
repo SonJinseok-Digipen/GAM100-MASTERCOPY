@@ -3,20 +3,37 @@
 
 let tilemap1;
 let centipede1;
+let tail1;
 
 function setup() {
   createCanvas(750, 750);
   tilemap1=new Mushroom_tilemap();
-  centipede1=new centipede(0,10);
+  centipede1=new centipedeHead(0,0);
+  tail1=new centipedetale1(centipede1);
+  tail2=new centipedetale2(tail1);
+  tail3=new centipedetale2(tail2);
+  //tail4=new centipedetale2(tail3);
+  //tail5=new centipedetale2(tail4);
+  //tail6=new centipedetale2(tail5);
   tilemap1.Initialize();
-  frameRate(10);
+  frameRate(10)
 }
 
 function draw() {
   background(220);
   drawgrid();
   centipede1.Update();
+  tail1.Update();
+  tail2.Update();
+  tail3.Update();
+  //tail4.Update();
+  //tail5.Update();
   centipede1.Show();
+  tail1.Show();
+  tail2.Show();
+  tail3.Show();
+  //tail4.Show();
+  //tail5.Show();
 }
 
 
@@ -28,7 +45,7 @@ function drawgrid()
  	for(let i=0; i<=tilemap1.cols; i++)
  	{
  		if(tilemap1.layers[j][i]==0)
- 		{
+ 		{ 
  		push();
  		fill(255);
  		rect(i*tilemap1.tilesize,j*tilemap1.tilesize,tilemap1.tilesize,tilemap1.tilesize);
@@ -50,11 +67,4 @@ function drawgrid()
  
 }
 
-function Draw_centipede()
-{
-   for(let i=0; i<=centipede1.total-1; i++)
-   {
-     rect(centipede1.tail[i].x,centipede1[i].y,25,25); 
-   }
 
-}
