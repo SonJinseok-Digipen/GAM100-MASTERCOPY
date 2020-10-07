@@ -1,54 +1,81 @@
 class Player{
   constructor(){
+    this.player_size = 25;
     this.player_x = width / 2;
-    this.player_y = height - 15;
-    this.map_boundary_x = width - 15;
-    this.map_boundary_y = height - 135;
-    this.player_size = 30;
+    this.player_y = height - this.player_size;
+    this.map_boundary_x = width - 25;
+    this.map_boundary_y = height - 175;
     this.player_xspeed = 10;
     this.player_yspeed = 10;
-    this.player_acceleration = 0;
-    this.player_attack_x = this.player_x - 7.5;
-    this.player_attack_y = this.player_y - 85;
+    //this.player_acceleration = 1;
+    this.player_attack_x = -100;
+    this.player_attack_y = this.player_y;
     this.player_attack_width = 15;
     this.player_attack_height = 45;
+    this.isthiskeypressed = false;
+    this.wasthiskeypressed = false;
+    this.isbulletexist = false;
   }
   
   update(){
+    this.isthiskeypressed = false;
+    this.isbulletexist = false;
      if(keyIsPressed)
     {
+      if(key == 'c'){
+        this.isthiskeypressed = true;
+        this.isbulletexist = true;
+      }
+      
      if(keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x)
       {
         this.player_x += this.player_xspeed;
+        //this.player_xspeed += this.player_acceleration;
+        
       }
-     if(keyCode == LEFT_ARROW && this.player_x > 15)
+     if(keyCode == LEFT_ARROW && this.player_x > 0)
       {
         this.player_x -= this.player_xspeed;
+        //this.player_xspeed += this.player_acceleration;
       }
       if(keyCode == UP_ARROW && this.player_y > this.map_boundary_y)
       {
         this.player_y -= this.player_yspeed;
       }
-      if(keyCode == DOWN_ARROW && this.player_y < height - 15)
+      if(keyCode == DOWN_ARROW && this.player_y < height - 25)
       {
         this.player_y += this.player_yspeed;
       }
-      if(key == 'c' || key == 'C' || key == 'x' || key == 'X')
-      {
-       //Fire bullets
-        if(this.player_attack_y >= 0){
-          this.player_attack_y -= 50;
-        }
-        
-      }
     }
+      if(this.isthiskeypressed == true && this.wasthiskeypressed == false){
+      this.isbulletexist = true;
+      this.player_attack_x = this.player_x + 5;
+      this.player_attack_y = this.player_y - 60;
+      }
+    this.wasthiskeypressed = this.isthiskeypressed;
+  }
+  
+  update_bullet(){
+    /*function keyPressed(){
+              fill('magenta');
+        rect(this.player_attack_x, this.player_attack_y, this.player_attack_width, this.player_attack_height);
+        this.player_attack_y -= 50;
+        if(this.player_attack_y <= 0){
+          this.isbulletexist = false;
+        }
+    }*/
+            fill('magenta');
+        rect(this.player_attack_x, this.player_attack_y, this.player_attack_width, this.player_attack_height);
+        this.player_attack_y -= 50;
+        if(this.player_attack_y <= 0){
+          this.isbulletexist = false;
+        }
   }
   
   draw(){
     push()
     fill('gold');
-    circle(this.player_x, this.player_y, this.player_size);
-    rect(this.player_attack_x, this.player_attack_y, this.player_attack_width, this.player_attack_height);
+    rect(this.player_x, this.player_y, this.player_size, this.player_size)
     pop()
   }
 }
