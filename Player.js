@@ -1,12 +1,12 @@
 class Player{
   constructor(){
     this.player_size = 25;
-    this.player_x = width / 2;
+    this.player_x = constrain(width / 2, 0, 750);
     this.player_y = height - this.player_size;
     this.map_boundary_x = width - 25;
     this.map_boundary_y = height - 175;
-    this.player_xspeed = 10;
-    this.player_yspeed = 10;
+    this.player_xspeed = 5;
+    this.player_yspeed = 5;
     this.player_acceleration = 1;
     this.player_attack_x = -100;
     this.player_attack_y = this.player_y;
@@ -29,20 +29,17 @@ class Player{
       {
         this.player_x += this.player_xspeed;
         if(this.player_x < this.map_boundary_x && this.player_x > 0){
-          this.player_xspeed += this.player_acceleration;
-        }else{
-          this.player_xspeed = 10;
-        }
-        
+          //this.player_xspeed += this.player_acceleration;
+        }else
+          this.player_xspeed = 5;
       }
-     if(keyCode == LEFT_ARROW && this.player_x > 0 && keyCode != RIGHT_ARROW)
+     if(keyCode == LEFT_ARROW && this.player_x > 0)
       {
         this.player_x -= this.player_xspeed;
         if(this.player_x < this.map_boundary_x && this.player_x > 0){
-          this.player_xspeed += this.player_acceleration;
-        }else{
-          this.player_xspeed = 10;
-        }
+          //this.player_xspeed += this.player_acceleration;
+        }else
+          this.player_xspeed = 5;
       }
       if(keyCode == UP_ARROW && this.player_y > this.map_boundary_y)
       {
@@ -55,8 +52,8 @@ class Player{
     }
       if(this.isthiskeypressed == true && this.wasthiskeypressed == false){
         if(this.isbulletexist == false){
-          this.player_attack_x = this.player_x + 5;
-          this.player_attack_y = this.player_y - 60;
+          this.player_attack_x = this.player_x + 10;
+          this.player_attack_y = this.player_y - 50;
           this.isbulletexist = true;
         }
       }

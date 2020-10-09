@@ -18,7 +18,7 @@ function setup() {
   //tail5=new centipedetale2(tail4);
   //tail6=new centipedetale2(tail5);
   tilemap1.Initialize();
-  frameRate(30)
+  frameRate(20)
 }
 
 function draw() {
