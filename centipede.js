@@ -15,9 +15,7 @@ class centipedeHead
 
  Update()
  {
-   this.posx=this.posx+this.xspeed;
-   this.posy=this.posy+this.yspeed;   
-
+    
   if(this.posx==725)
   {
     this.yspeed=25;
@@ -27,8 +25,9 @@ class centipedeHead
   {
     this.yspeed=0;
     this.xspeed=-25;
-  }
- 
+  } 
+   this.posx=this.posx+this.xspeed;
+   this.posy=this.posy+this.yspeed;
   }
  
  Show()
@@ -66,7 +65,7 @@ class centipedetale1
   
  Show()
  {
-     
+      
     push();
     fill(0,255,0);
     rect(this.posx,this.posy,25,25);
@@ -93,18 +92,17 @@ class centipedetale2
   {
    this.posx=this.track.posx-this.track.xspeed;
    this.posy=this.track.posy-this.track.yspeed;
-   if(this.track.posx>=725)
+   if(this.track.posx==725)
    {
      this.track.xspeed=0;
      this.track.yspeed=25;
    }
-   if(this.track.posy==25)
+
+  if(this.track.posy==25)
   {
     this.track.yspeed=0;
     this.track.xspeed=-25;
-  }
-
- 
+  } 
 
   }
  Show()
@@ -117,3 +115,4 @@ class centipedetale2
  }
 
 }
+

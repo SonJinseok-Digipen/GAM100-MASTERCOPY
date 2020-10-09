@@ -33,7 +33,7 @@ function setup() {
     tail5 =new centipedetale2(tail4);
     player = new Player();
     tilemap1.Initialize();
-    frameRate(1);
+    frameRate(5);
 }
 
 function draw() {
