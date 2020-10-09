@@ -1,3 +1,2 @@
 # GAM100-MASTERCOPY
-
-Jinseok Son
+hyunwoo.nam
