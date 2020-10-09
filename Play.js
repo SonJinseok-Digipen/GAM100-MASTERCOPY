@@ -1,26 +1,28 @@
 class Play {
     constructor() {
-        this.x1 = 200;
-        this.y2 = 200;
-        this.q;
+        frameRate(10);
     }
 
     Update() {
-        if (keyIsPressed) {
-            if (key == 'a') {
-                a = 1;
-            }
-            if (key == 's') {
-                this.q = square(this.x1, this.y2, 500);
-            }
-        }
+        centipede1.Update();
+        tail1.Update();
+        tail2.Update();
+        tail3.Update();
+        //tail4.Update();
+        //tail5.Update();
+        
+        //tail4.Show();
+        //tail5.Show();
+        player.update();
     }
 
     Draw() {
-        push()
-        fill(100);
-        square(this.x1, this.y2, 400);
-        this.q;
-        pop()
+        drawgrid();
+        player.update_bullet();
+        centipede1.Show();
+        tail1.Show();
+        tail2.Show();
+        tail3.Show();
+        player.draw();
     }
 }

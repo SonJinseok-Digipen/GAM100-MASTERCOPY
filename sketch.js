@@ -1,27 +1,71 @@
 let MainMenuScene;
 let PlayScene;
-var CurrentScenenum = 0;
+let CurrentScenenum = 1;
 let a = 1;
 let CurrentScene1;
 let CurrentScene2;
+let main_menu;
+
+let tilemap1;
+let centipede1;
+let tail1;
+let tail2;
+let tail3;
+let player;
+
+function preload() {
+    main_menu = loadImage('Asset/unknown.png');
+}
+
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(750, 750);
     MainMenuScene = new MainMenu();
     PlayScene = new Play();
+    tilemap1 = new Mushroom_tilemap();
+    centipede1 = new centipedeHead(0, 0);
+    tail1 = new centipedetale1(centipede1);
+    tail2 = new centipedetale2(tail1);
+    tail3 = new centipedetale2(tail2);
+    player = new Player();
+    tilemap1.Initialize();
 }
 
 function draw() {
     background(220);
     CurrentScenenum = a;
     if (CurrentScenenum == 1) {
-        CurrentScene1 = MainMenuScene.Update();
-        CurrentScene2 = MainMenuScene.Draw();
+        MainMenuScene.Update();
+        MainMenuScene.Draw();
     }
+
     if (CurrentScenenum == 2) {
-        CurrentScene1 = PlayScene.Update();
-        CurrentScene2 = PlayScene.Draw();
+        PlayScene.Update();
+        PlayScene.Draw();
     }
-    CurrentScene1;
-    CurrentScene2;
+
+}
+
+function drawgrid() {
+    let current_mushnumber = 0;
+    for (let j = 0; j < tilemap1.rows; j++) {
+        for (let i = 0; i <= tilemap1.cols; i++) {
+            if (tilemap1.layers[j][i] == 0) {
+                push();
+                fill(255);
+                rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
+                pop();
+            }
+
+            if (tilemap1.layers[j][i] == 1) {
+                push();
+                fill(0, 0, 255);
+                rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
+                current_mushnumber++;
+                pop();
+
+            }
+
+        }
+    }
 }
