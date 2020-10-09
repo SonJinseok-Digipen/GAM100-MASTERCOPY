@@ -12,7 +12,8 @@ class MainMenu {
         }
     }
 
+
     Draw() {
-        loadImage('unknown.png', img => {image(img, 0, 0);});
+        image(main_menu, 0, 0, 800, 800)
     }
 }
