@@ -13,6 +13,10 @@ let tail2;
 let tail3;
 let player;
 
+let flea1;
+let scolpion1;
+let spider1;
+
 function preload() {
     main_menu = loadImage('Asset/unknown.png');
 }
@@ -28,6 +32,9 @@ function setup() {
     tail2 = new centipedetale2(tail1);
     tail3 = new centipedetale2(tail2);
     player = new Player();
+    flea1 = new Flea();
+    scolpion1 = new scolpion();
+    spider1 = new spider();
     tilemap1.Initialize();
 }
 

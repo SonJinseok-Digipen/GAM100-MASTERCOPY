@@ -8,12 +8,10 @@ class Play {
         tail1.Update();
         tail2.Update();
         tail3.Update();
-        //tail4.Update();
-        //tail5.Update();
-        
-        //tail4.Show();
-        //tail5.Show();
+        flea1.update();
+        scolpion1.update();
         player.update();
+        spider1.update();
     }
 
     Draw() {
@@ -24,5 +22,8 @@ class Play {
         tail2.Show();
         tail3.Show();
         player.draw();
+        flea1.draw();
+        scolpion1.draw();
+        spider1.draw();
     }
 }
