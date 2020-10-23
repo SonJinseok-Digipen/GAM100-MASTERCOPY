@@ -9,7 +9,7 @@ class Play {
         tail2.Update();
         tail3.Update();
         tail4.Update();
-        tail5.Update();
+        //tail5.Update();
         player.update();
     }
 
@@ -21,7 +21,7 @@ class Play {
         tail2.Show();
         tail3.Show();
         tail4.Show();
-        tail5.Show();
+        //tail5.Show();
         player.draw();
     }
 }

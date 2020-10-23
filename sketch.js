@@ -25,7 +25,7 @@ function setup() {
     MainMenuScene = new MainMenu();
     PlayScene = new Play();
     tilemap1 = new Mushroom_tilemap();
-    centipede1 = new centipedeHead(0, 0);
+    centipede1 = new centipedeHead(0, 700);
     tail1 = new centipedetale1(centipede1);
     tail2 = new centipedetale2(tail1);
     tail3 = new centipedetale2(tail2);
