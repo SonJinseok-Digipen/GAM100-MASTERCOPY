@@ -47,17 +47,3 @@ class Mushroom_tilemap
     
   
  }
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
