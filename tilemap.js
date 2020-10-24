@@ -1,7 +1,3 @@
-//This code made by Jinseok Son
-//Do not change any of this Code If you can't understand how this code work
-
- 
 class Mushroom_tilemap
 {
 
