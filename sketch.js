@@ -31,9 +31,21 @@ function setup() {
     tail3 = new centipedetale2(tail2);
     tail4 =new centipedetale2(tail3);
     tail5 =new centipedetale2(tail4);
+    tail6 =new centipedetale2(tail5);
+    tail7= new centipedetale2(tail6);
+    tail8= new centipedetale2(tail7);
+    tail9=new centipedetale2(tail8);
+    tail10=new centipedetale2(tail9);
+    tail11 =new centipedetale2(tail10);
+
+    haed2=new centipedeHead(0, 0);
+    
+  
+
+
+
     player = new Player();
-    tilemap1.Initialize();
-    frameRate(5);
+    frameRate(20);
 }
 
 function draw() {
