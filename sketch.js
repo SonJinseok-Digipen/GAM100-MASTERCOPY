@@ -15,10 +15,7 @@
   let tail4;
   let tail5;
   let player;
-
-  let mushroom;
-  let mushroom2;
-
+  let player_bullet;
 
   function preload() {
       main_menu = loadImage('Asset/unknown.png');
@@ -48,10 +45,9 @@
 
       haed2 = new centipedeHead(0, 0);
 
-
+      player_bullet = new bullet();
 
       player = new Player();
-      frameRate(20);
   }
 
   function draw() {

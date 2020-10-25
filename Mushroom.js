@@ -3,19 +3,24 @@ class Mushroom
   constructor(x, y){
     this.posx = x;
     this.posy = y;
-    this.mushroom_life = 3;
     this.size=25;
     this.isdie=false;
     this.life=4;
     this.IsCollison=false;
-    }
+   }
   
   update()
   {
-  if(dist(player.bullet.x,player.bull,this.posx,this.psy))
+
+
+   console.log(player.bullets);
+
+  for(let i=0; i<player.bullets.length; i++)
   {
-     this.IsCollison=true;
-     console.log( this.IsCollison);
+    if(dist(player.bullets[i].player_x,player.bullets[i].player_y,this.posx,this.posy)<100)
+    {
+      console.log("hello");
+    }
   }
 
 

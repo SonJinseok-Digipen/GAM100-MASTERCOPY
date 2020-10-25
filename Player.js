@@ -8,25 +8,20 @@ class Player{
     this.player_velocity = 25;
     this.player_acceleration = 1;
     this.player_max_velocity = 40;
-    //this.player_acceleration_scalar = abs(this.player_acceleration);
-    this.player_attack_x = -10;
-    this.player_attack_y = this.player_y;
-    this.player_attack_width = 5;
-    this.player_attack_height = 30;
     this.isthiskeypressed = false;
-    this.wasthiskeypressed = false;
-    this.isbulletexist = false;
-  }
+    this.bullet= new bullet(this.player_x,this.player_y);
+    this.bullets=[];
+    }
   
   update(){
-    this.isthiskeypressed = false;
+   
      if(keyIsPressed)
     {
       if(key == 'c'){
         this.isthiskeypressed = true;
+        this.bullets.push(new bullet(this.player_x,this.player_y));
       }
-      
-     if(keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x)
+       if(keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x)
       {
         this.player_x += this.player_velocity;
         if(this.player_x < this.map_boundary_x && this.player_x > 0){
@@ -81,31 +76,38 @@ class Player{
       }
     }else{
       this.player_velocity = 25;
+    } 
+
+
+
+     
+
+
+
+
+
+
+
+    ///////////////////////////////////////
+    for(let i=0; i<this.bullets.length; i++)
+    {
+      this.bullets[i].update();
+
     }
-      if(this.isthiskeypressed == true && this.wasthiskeypressed == false){
-        if(this.isbulletexist == false){
-          this.player_attack_x = this.player_x + 10;
-          this.player_attack_y = this.player_y - 75;
-          this.isbulletexist = true;
-        }
-      }
-    this.wasthiskeypressed = this.isthiskeypressed;
-    //console.log(this.player_velocity)
-  }
   
-  update_bullet(){
-            fill('magenta');
-        rect(this.player_attack_x, this.player_attack_y,       this.player_attack_width, this.player_attack_height);
-        this.player_attack_y -= 50;
-        if(this.player_attack_y <= 0){
-          this.isbulletexist = false;
-        }
-  }
+}
   
   draw(){
     push()
     fill('gold');
     rect(this.player_x, this.player_y, this.player_size, this.player_size)
     pop()
+
+   for(let i=0; i<this.bullets.length; i++)
+    {
+      this.bullets[i].draw();
+    }
   }
+
+
 }
