@@ -23,7 +23,7 @@ class Mushroom_tilemap {
 
 
         for (let i = 0; i < 32; i++) {
-            this.layers[int(random(3, this.rows))][int(random(0, this.cols))] = 1;
+            this.layers[int(random(3, this.rows))][int(random(0, this.cols))] = new Mushroom(int(random(3, this.rows) * 25),int(random(0, this.cols) * 25));
         }
 
 

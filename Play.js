@@ -20,8 +20,6 @@ class Play {
         scolpion1.update();
         player.update();
         spider1.update();
-        mushroom.update();
-        mushroom2.update();
     }
 
     Draw() {
@@ -43,7 +41,5 @@ class Play {
         flea1.draw();
         scolpion1.draw();
         spider1.draw();
-        mushroom.draw();
-        mushroom2.draw();
     }
 }

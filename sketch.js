@@ -48,9 +48,6 @@
 
       haed2 = new centipedeHead(0, 0);
 
-      mushroom = new Mushroom(0, 50);
-      mushroom2 = new Mushroom(200, 50);
-
 
 
       player = new Player();
@@ -83,7 +80,7 @@
                   pop();
               }
 
-              if (tilemap1.layers[j][i] == 1) {
+              if (tilemap1.layers[j][i] != 0) {
                   push();
                   fill(0, 0, 255);
                   rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
