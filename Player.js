@@ -1,14 +1,15 @@
 class Player{
   constructor(){
     this.player_size = 25;
-    this.player_x = constrain(width / 2, 0, 750);
+    this.player_x = width / 2;
     this.player_y = height - this.player_size;
     this.map_boundary_x = width - 25;
     this.map_boundary_y = height - 175;
-    this.player_xspeed = 5;
-    this.player_yspeed = 5;
+    this.player_velocity = 25;
     this.player_acceleration = 1;
-    this.player_attack_x = -100;
+    this.player_max_velocity = 40;
+    //this.player_acceleration_scalar = abs(this.player_acceleration);
+    this.player_attack_x = -10;
     this.player_attack_y = this.player_y;
     this.player_attack_width = 5;
     this.player_attack_height = 30;
@@ -27,42 +28,74 @@ class Player{
       
      if(keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x)
       {
-        this.player_x += this.player_xspeed;
+        this.player_x += this.player_velocity;
         if(this.player_x < this.map_boundary_x && this.player_x > 0){
-          //this.player_xspeed += this.player_acceleration;
-        }else
-          this.player_xspeed = 5;
-      }
-     if(keyCode == LEFT_ARROW && this.player_x > 0)
+          this.player_velocity += this.player_acceleration;
+        }
+        if(this.player_x + this.player_velocity > this.map_boundary_x){
+          this.player_x = this.map_boundary_x;
+          this.player_velocity = 25;
+        }
+        /*if(this.player_velocity > this.player_max_velocity){
+          this.player_velocity = this.player_max_velocity;
+          this.player_acceleration = 0;
+        }*/
+        
+      }if(keyCode == LEFT_ARROW && this.player_x > 0)
       {
-        this.player_x -= this.player_xspeed;
+        this.player_x -= this.player_velocity;
         if(this.player_x < this.map_boundary_x && this.player_x > 0){
-          //this.player_xspeed += this.player_acceleration;
-        }else
-          this.player_xspeed = 5;
+          this.player_velocity += this.player_acceleration;
+        }
+        if(this.player_x - this.player_velocity < 0){
+          this.player_x = 0;
+          this.player_velocity = 25;
+        }
+        
+        /*if(this.player_velocity > this.player_max_velocity){
+          this.player_velocity = this.player_max_velocity;
+          this.player_acceleration = 0;
+        }*/
       }
       if(keyCode == UP_ARROW && this.player_y > this.map_boundary_y)
       {
-        this.player_y -= this.player_yspeed;
+        this.player_y -= this.player_velocity;
+         /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
+          this.player_velocity += this.player_acceleration;
+        }*/
+        if(this.player_y - this.player_velocity < this.map_boundary_y){
+          this.player_y = this.map_boundary_y;
+          this.player_velocity = 25;
+        }
       }
       if(keyCode == DOWN_ARROW && this.player_y < height - 25)
       {
-        this.player_y += this.player_yspeed;
+        this.player_y += this.player_velocity;
+        /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
+          this.player_velocity += this.player_acceleration;
+        }*/
+        if(this.player_y + this.player_velocity > height - 25){
+          this.player_y = height - 25;
+          this.player_velocity = 25;
+        }
       }
+    }else{
+      this.player_velocity = 25;
     }
       if(this.isthiskeypressed == true && this.wasthiskeypressed == false){
         if(this.isbulletexist == false){
           this.player_attack_x = this.player_x + 10;
-          this.player_attack_y = this.player_y - 50;
+          this.player_attack_y = this.player_y - 75;
           this.isbulletexist = true;
         }
       }
     this.wasthiskeypressed = this.isthiskeypressed;
+    //console.log(this.player_velocity)
   }
   
   update_bullet(){
             fill('magenta');
-        rect(this.player_attack_x, this.player_attack_y, this.player_attack_width, this.player_attack_height);
+        rect(this.player_attack_x, this.player_attack_y,       this.player_attack_width, this.player_attack_height);
         this.player_attack_y -= 50;
         if(this.player_attack_y <= 0){
           this.isbulletexist = false;

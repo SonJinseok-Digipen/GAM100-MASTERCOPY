@@ -6,6 +6,8 @@ class spider {
         this.spider_random4;
         this.spider_random5 = random(0, 4);
         this.spider_random3;
+        this.spider_checkdown = 0;
+        this.spider_checkup = 0;
         this.spider_x = -10;
         this.spider_y = int(this.spider_random1) * 25;
         this.spider_size = 25;
@@ -30,8 +32,17 @@ class spider {
         // }
 
         if (400 <= this.spider_y && this.spider_y <= 725) {
+            if (this.spider_y == 550) {
+                this.spider_checkdown = 0;
+                this.spider_checkup = 0;
+            }
             if (int(this.spider_random3) == 0) {
-                this.spider_yspeed = 10;
+                if (this.spider_checkdown == 0) {
+                    this.spider_yspeed = 10;
+                } else {
+                    this.spider_yspeed = -10;
+                }
+                // this.spider_yspeed = 10;
                 if (int(this.spider_random2) == 0) {
                     this.spider_xspeed = 10;
                 } else {
@@ -41,7 +52,12 @@ class spider {
                     this.spider_random3 = random(0, 4);
                 }
             } else if (int(this.spider_random3) == 1) {
-                this.spider_yspeed = -10;
+                if (this.spider_checkup == 0) {
+                    this.spider_yspeed = -10;
+                } else {
+                    this.spider_yspeed = 10;
+                }
+                // this.spider_yspeed = -10;
                 if (int(this.spider_random2) == 0) {
                     this.spider_xspeed = 10;
                 } else {
@@ -51,13 +67,23 @@ class spider {
                     this.spider_random3 = random(0, 4);
                 }
             } else if (int(this.spider_random3) == 2) {
-                this.spider_yspeed = 10;
+                if (this.spider_checkdown == 0) {
+                    this.spider_yspeed = 10;
+                } else {
+                    this.spider_yspeed = -10;
+                }
+                // this.spider_yspeed = 10;
                 this.spider_xspeed = 0;
                 if (frameCount % 5 == 0) {
                     this.spider_random3 = random(0, 4);
                 }
             } else {
-                this.spider_yspeed = -10;
+                if (this.spider_checkup == 0) {
+                    this.spider_yspeed = -10;
+                } else {
+                    this.spider_yspeed = 10;
+                }
+                // this.spider_yspeed = -10;
                 this.spider_xspeed = 0;
                 if (frameCount % 5 == 0) {
                     this.spider_random3 = random(0, 4);
@@ -65,8 +91,12 @@ class spider {
             }
         } else if (this.spider_y < 400) {
             this.spider_yspeed = 10;
+            this.spider_checkup = 1;
+            this.spider_checkdown = 0;
         } else if (725 < this.spider_y) {
             this.spider_yspeed = -10;
+            this.spider_checkup = 0;
+            this.spider_checkdown = 1;
         }
 
         if (this.spider_x < -75 || 800 < this.spider_x) {
