@@ -13,7 +13,7 @@
    this.isthiskeypressed = false;
    this.wasthiskeypressed = false;
    this.isbulletexist = false;
-
+  
 
   }
   
@@ -41,9 +41,8 @@
 
      if(this.player_attack_y <=0)
      {
-          this.player_attack_y -= 25;
-          this.isbulletexist = false;
-      }
+      this.isbulletexist = false;
+    }
 
      
   }
@@ -53,7 +52,7 @@
   draw()
   {
     fill('magenta');
-        rect(this.player_attack_x, this.player_attack_y, this.player_attack_width, this.player_attack_height);
+    rect(this.player_attack_x, this.player_attack_y, this.player_attack_width, this.player_attack_height);
     this.player_attack_y -= 50;
     if(this.player_attack_y <= 0)
     {

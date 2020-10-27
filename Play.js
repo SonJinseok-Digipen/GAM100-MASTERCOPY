@@ -4,15 +4,14 @@ class Play {
     }
 
   Update() {
-
-        centipede1.Update();
+         centipede1.Update();
         tail1.Update();
         
         
         tail2.Update();
         
         tail3.Update();
-        Mushroom1.update();
+        mushmap.update();
         /*
 
         tail4.Update();
@@ -33,12 +32,13 @@ class Play {
     }
 
     Draw() {
+        drawgrid();
         tilemap1.Show();
         centipede1.Show();
         tail1.Show();
         tail2.Show();
-        Mushroom1.draw();
-        /*
+        mushmap.draw();
+              /*
         tail3.Show();
         
         tail4.Show();

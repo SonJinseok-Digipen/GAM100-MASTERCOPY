@@ -40,9 +40,10 @@ function setup() {
     tail10=new centipedetale2(tail9);
     tail11 =new centipedetale2(tail10);
     haed2=new centipedeHead(0, 0);
-    player = new Player();
-    Mushroom1=new Mushroom(25,25);
+    player = new Player(tilemap1);
     player_bullet=new bullet();
+    mushmap=new Mushmap(tilemap1);
+    mushmap.Initialize();
     frameRate(15);
 }
 
@@ -61,26 +62,22 @@ function draw() {
 
 }
 
-function drawgrid() {
+
+function drawgrid() 
+{
     let current_mushnumber = 0;
-    for (let j = 0; j < tilemap1.rows; j++) {
-        for (let i = 0; i <= tilemap1.cols; i++) {
-            if (tilemap1.layers[j][i] == 0) {
-                push();
-                fill(255);
-                rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
-                pop();
-            }
-
-            if (tilemap1.layers[j][i] == 1) {
-                push();
-                fill(0, 0, 255);
-                rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
-                current_mushnumber++;
-                pop();
-
-            }
+    for (let j = 0; j < tilemap1.rows; j++) 
+    {
+        for (let i = 0; i <= tilemap1.cols; i++)
+         {            
+            push();
+            fill(255);
+            rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
+            pop();
+            
+         
+        }
 
         }
     }
-}
+

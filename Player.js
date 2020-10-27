@@ -1,5 +1,5 @@
 class Player{
-  constructor(){
+  constructor(mushmap){
     this.player_size = 25;
     this.player_x = width / 2;
     this.player_y = height - this.player_size;
@@ -9,8 +9,9 @@ class Player{
     this.player_acceleration = 1;
     this.player_max_velocity = 40;
     this.isthiskeypressed = false;
-    this.bullet= new bullet(this.player_x,this.player_y);
     this.bullets=[];
+    
+
     }
   
   update(){
@@ -18,8 +19,8 @@ class Player{
      if(keyIsPressed)
     {
       if(key == 'c'){
-        this.isthiskeypressed = true;
-        this.bullets.push(new bullet(this.player_x,this.player_y));
+        
+         this.bullets.push(new bullet(this.player_x,this.player_y+50));
       }
        if(keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x)
       {
@@ -78,23 +79,20 @@ class Player{
       this.player_velocity = 25;
     } 
 
-
-
-     
-
+    
 
 
 
-
-
-
-    ///////////////////////////////////////
+//총알 발사
     for(let i=0; i<this.bullets.length; i++)
-    {
+   {
       this.bullets[i].update();
+      if(this.bullets[this.bullets.length-1].player_attack_y<30)
+      {
+        this.bullets.pop();
+      }
+    } 
 
-    }
-  
 }
   
   draw(){
@@ -103,6 +101,7 @@ class Player{
     rect(this.player_x, this.player_y, this.player_size, this.player_size)
     pop()
 
+//총알 그리는 부분
    for(let i=0; i<this.bullets.length; i++)
     {
       this.bullets[i].draw();
