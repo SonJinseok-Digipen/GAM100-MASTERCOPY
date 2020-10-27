@@ -8,11 +8,10 @@ class Player{
     this.player_velocity = 25;
     this.player_acceleration = 1;
     this.player_max_velocity = 40;
-    //this.player_acceleration_scalar = abs(this.player_acceleration);
     this.player_attack_x = -10;
     this.player_attack_y = this.player_y;
     this.player_attack_width = 5;
-    this.player_attack_height = 30;
+    this.player_attack_height = 25;
     this.isthiskeypressed = false;
     this.wasthiskeypressed = false;
     this.isbulletexist = false;
@@ -85,7 +84,7 @@ class Player{
       if(this.isthiskeypressed == true && this.wasthiskeypressed == false){
         if(this.isbulletexist == false){
           this.player_attack_x = this.player_x + 10;
-          this.player_attack_y = this.player_y - 75;
+          this.player_attack_y = this.player_y - 25;
           this.isbulletexist = true;
         }
       }
@@ -94,12 +93,20 @@ class Player{
   }
   
   update_bullet(){
-            fill('magenta');
+    if(this.isbulletexist == true){
+      if(this.player_attack_y > -50){
+      fill('magenta');
         rect(this.player_attack_x, this.player_attack_y,       this.player_attack_width, this.player_attack_height);
-        this.player_attack_y -= 50;
-        if(this.player_attack_y <= 0){
+        this.player_attack_y -= 25;
+        if(this.player_attack_y <= -25){
           this.isbulletexist = false;
         }
+      }
+    }
+    
+    //console.log(this.isbulletexist)
+   //console.log(this.isbulletexist)
+
   }
   
   draw(){
@@ -107,5 +114,7 @@ class Player{
     fill('gold');
     rect(this.player_x, this.player_y, this.player_size, this.player_size)
     pop()
+  
   }
 }
+//|| dist(this.player_attack_x,this.player_attack_y,25,25)<30

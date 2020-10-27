@@ -1,34 +1,43 @@
-class Mushroom{
+class Mushroom
+{
   constructor(x, y){
-    this.mushroom_x = x;
-    this.mushroom_y = y;
-    this.mushroom_life = 4;
-    this.ismushroomdestroyed = false;
-    this.mushroom_size = new Mushroom_tilemap();
-    this.bullet = new Player();
-    this.bullet_update = this.bullet.update_bullet();
-    this.bullet_update2 = this.bullet.update();
-  }
-  
-  update(){
-    this.bullet_update2 = true;
-    this.bullet_update = true;
-    if(dist(this.mushroom_x, this.mushroom_y + this.mushroom_size.tilesize, this.bullet.player_attack_x + this.bullet.player_attack_width, this.bullet.player_attack_y) == 0){
-      this.mushroom_life--;
-    fill('orange');  
-    square(this.mushroom_x, this.mushroom_y, this.mushroom_size.tilesize);
+    this.posx = x;
+    this.posy = y;
+    this.size=25;
+    //this.isdie=false;
+    this.life=4;
+    //this.IsCollison=false;
     }
-    //console.log(this.mushroom_life);
-    //console.log(this.bullet.player_attack_x + this.bullet.player_attack_width)
-    //console.log(this.bullet.player_attack_y);
-    console.log(dist(this.mushroom_x, this.mushroom_y + this.mushroom_size.tilesize, this.bullet.player_attack_x + this.bullet.player_attack_width, this.bullet.player_attack_y))
+  
+  update()
+  {
+  if(this.posx <= player.player_attack_x + player.player_attack_width && this.posx + this.size >= player.player_attack_x && this.posy == player.player_attack_y && this.life > 0 && player.isbulletexist == true){
+    this.life -= 1;
+    player.isbulletexist = false;
   }
-  
-  
-  draw(){
+      /*dist(player.player_attack_x ,player.player_attack_y ,this.posx ,this.posy)  <= this.size*/  /*|| dist(player.player_attack_x ,player.player_attack_y ,this.posx + this.size ,this.posy + this.size) == 0*/
+
+
+   /*if(this.IsCollison==true)
+   {
+    this.life=this.life-1;
+    // console.log(this.life)
+   }*/
+   
+    
+  }
+
+  draw()
+  {
+    //if(this.isdie==false)
+    if(this.life > 0)
+    {
     push()
     fill('cyan');
-    square(this.mushroom_x, this.mushroom_y, this.mushroom_size.tilesize);
+    square(this.posx,this.posy,this.size);
     pop()
+    
+    }
   }
+
 }
