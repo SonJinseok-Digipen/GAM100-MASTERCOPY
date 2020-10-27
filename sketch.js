@@ -14,6 +14,8 @@ let tail3;
 let tail4;
 let tail5;
 let player;
+let Mushroom1;
+let player_bullet;
 
 function preload() {
     main_menu = loadImage('Asset/unknown.png');
@@ -25,7 +27,7 @@ function setup() {
     MainMenuScene = new MainMenu();
     PlayScene = new Play();
     tilemap1 = new Mushroom_tilemap();
-    centipede1 = new centipedeHead(0, 700);
+    centipede1 = new centipedeHead(0, 100);
     tail1 = new centipedetale1(centipede1);
     tail2 = new centipedetale2(tail1);
     tail3 = new centipedetale2(tail2);
@@ -37,15 +39,12 @@ function setup() {
     tail9=new centipedetale2(tail8);
     tail10=new centipedetale2(tail9);
     tail11 =new centipedetale2(tail10);
-
     haed2=new centipedeHead(0, 0);
-    
-  
-
-
-
-    player = new Player();
-    frameRate(20);
+    player = new Player(tilemap1);
+    player_bullet=new bullet();
+    mushmap=new Mushmap(tilemap1);
+    mushmap.Initialize();
+    frameRate(15);
 }
 
 function draw() {
@@ -63,26 +62,22 @@ function draw() {
 
 }
 
-function drawgrid() {
+
+function drawgrid() 
+{
     let current_mushnumber = 0;
-    for (let j = 0; j < tilemap1.rows; j++) {
-        for (let i = 0; i <= tilemap1.cols; i++) {
-            if (tilemap1.layers[j][i] == 0) {
-                push();
-                fill(255);
-                rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
-                pop();
-            }
-
-            if (tilemap1.layers[j][i] == 1) {
-                push();
-                fill(0, 0, 255);
-                rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
-                current_mushnumber++;
-                pop();
-
-            }
+    for (let j = 0; j < tilemap1.rows; j++) 
+    {
+        for (let i = 0; i <= tilemap1.cols; i++)
+         {            
+            push();
+            fill(255);
+            rect(i * tilemap1.tilesize, j * tilemap1.tilesize, tilemap1.tilesize, tilemap1.tilesize);
+            pop();
+            
+         
+        }
 
         }
     }
-}
+

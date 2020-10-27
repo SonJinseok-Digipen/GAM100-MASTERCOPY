@@ -1,18 +1,19 @@
 class Play {
     constructor() {
-        frameRate(10);
+      
     }
 
   Update() {
-
-        centipede1.Update();
+         centipede1.Update();
         tail1.Update();
         
         
         tail2.Update();
         
         tail3.Update();
+        mushmap.update();
         /*
+
         tail4.Update();
         
         tail5.Update();
@@ -31,14 +32,13 @@ class Play {
     }
 
     Draw() {
+        drawgrid();
         tilemap1.Show();
-        player.update_bullet();
         centipede1.Show();
         tail1.Show();
-        
-        
         tail2.Show();
-        /*
+        mushmap.draw();
+              /*
         tail3.Show();
         
         tail4.Show();

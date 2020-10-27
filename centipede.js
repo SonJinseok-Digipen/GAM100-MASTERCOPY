@@ -1,25 +1,24 @@
 class centipedeHead
 {
 
- constructor(x,y)
+ constructor(x,y,tilemap=tilemap1)
  {
 
-   this.tilemap=new Mushroom_tilemap();
    this.posx=x;
    this.posy=y;
    this.xspeed=25;
    this.yspeed=0;
    this.direction1=true;
    this.direction2=false;
-    
+   this.searcharea=tilemap1.layers[(this.posy)/25][(this.posx+(this.xspeed))/25];
+   this.searcharea2=tilemap1.layers[(this.posx)/25][(this.posx-this.xspeed)/25];  
    }
 
  Update()
  {
 if(this.direction1)
 {
-    switch(this.posy)
-
+  switch(this.posy)
   {
    case 25:
    this.yspeed=0;
@@ -145,11 +144,13 @@ if(this.direction1)
    break;
    }
  
-  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25))
+  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25)||this.searcharea!=0)
   {
     this.yspeed=25;
     this.xspeed=0;
+
   } 
+ 
 }
 if(this.direction2)
 {
@@ -182,20 +183,20 @@ if(this.direction2)
    break;
    }
  
-  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25))
+  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25)||this.searcharea!=0)
   {
     this.yspeed=-25;
     this.xspeed=0;
   } 
-  
- 
-
  
 }
-
+  
    this.posx=this.posx+this.xspeed;
    this.posy=this.posy+this.yspeed;
+   this.searcharea=tilemap1.layers[(this.posy)/25][(this.posx+(this.xspeed))/25]; 
+  this.searcharea2=tilemap1.layers[(this.posy)/25][(this.posx-this.xspeed)/25];  
 
+    
   
   }
  
