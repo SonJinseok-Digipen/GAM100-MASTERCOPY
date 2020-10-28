@@ -16,6 +16,8 @@
   let tail5;
   let player;
   let player_bullet;
+  let Mushroom1;
+  let scores;
 
   function preload() {
       main_menu = loadImage('Asset/unknown.png');
@@ -27,7 +29,7 @@
       MainMenuScene = new MainMenu();
       PlayScene = new Play();
       tilemap1 = new Mushroom_tilemap();
-      centipede1 = new centipedeHead(0, 700);
+      centipede1 = new centipedeHead(0, 0);
       flea1 = new Flea();
       spider1 = new spider();
       scolpion1 = new scolpion();
@@ -48,6 +50,12 @@
       player_bullet = new bullet();
 
       player = new Player();
+
+      mushmap = new Mushmap(tilemap1);
+      mushmap.Initialize();
+
+      scores = new score();
+
   }
 
   function draw() {

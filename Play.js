@@ -20,11 +20,15 @@ class Play {
         scolpion1.update();
         player.update();
         spider1.update();
+        player_bullet.update();
+        mushmap.update();
+        scores.update();
     }
 
     Draw() {
         drawgrid();
-        player.update_bullet();
+        mushmap.draw();
+        player_bullet.draw();
         centipede1.Show();
         tail1.Show();
         tail2.Show();
@@ -41,5 +45,6 @@ class Play {
         flea1.draw();
         scolpion1.draw();
         spider1.draw();
+        scores.draw();
     }
 }

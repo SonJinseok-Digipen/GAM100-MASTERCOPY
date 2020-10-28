@@ -10,6 +10,8 @@ class scolpion {
         this.scolpion_speed = 10;
         this.wave = 1;
         this.num = 0;
+        this.colsc = 1;
+        this.scscore = 0;
     }
 
     update() {
@@ -25,6 +27,8 @@ class scolpion {
             this.scolpion_y = int(this.scolpion_randomy2) * 25;
             this.scolpion_xspeed = 10;
 
+            this.colsc = 1;
+
             this.num = 1;
         }
 
@@ -36,13 +40,25 @@ class scolpion {
                 this.wave += 1;
             }
         }
+
+        if (this.colfl == 1) {
+            for (let i = 0; i < player.bullets.length; i++) {
+                if (dist(player.bullets[i].player_attack_x, player.bullets[i].player_attack_y, this.scolpion_x, this.scolpion_y) <= 25) {
+                    this.colsc = 0;
+                    this.scscore += 1;
+                }
+            }
+        }
+
     }
 
     draw() {
-        push()
-        fill('purple');
-        ellipseMode(CORNER);
-        circle(this.scolpion_x, this.scolpion_y, this.scolpion_size);
-        pop()
+        if (this.colsc == 1) {
+            push()
+            fill('purple');
+            ellipseMode(CORNER);
+            circle(this.scolpion_x, this.scolpion_y, this.scolpion_size);
+            pop()
+        }
     }
 }

@@ -14,6 +14,10 @@ class spider {
         this.spider_xspeed = 0;
         this.spider_yspeed = 0;
 
+        this.colsp = 1;
+        this.spscore = 0;
+        this.plandsp = 0;
+
         if (int(this.spider_random2) == 0) {
             this.spider_x = 0;
             this.spider_xspeed = 10;
@@ -100,6 +104,7 @@ class spider {
         }
 
         if (this.spider_x < -75 || 800 < this.spider_x) {
+            this.colsp = 1;
             this.spider_random2 = random(0, 2);
             this.spider_random4 = random(16, 29);
             if (int(this.spider_random2) == 0) {
@@ -113,13 +118,39 @@ class spider {
                 this.spider_xspeed = -10;
             }
         }
+
+        for (let i = 0; i < player.bullets.length; i++) {
+            if (dist(player.bullets[i].player_attack_x, player.bullets[i].player_attack_y, this.spider_x, this.spider_y) <= 25) {
+                if (this.colsp == 1) {
+                    this.plandsp = player.player_y - this.spider_y;
+                    if (this.plandsp <= 400) {
+                        this.spscore += 1;
+                        if (this.plandsp <= 100) {
+                            this.spscore += 1;
+                            if (this.plandsp <= 50) {
+                                this.spscore += 1;
+                            }
+                        }
+                    }
+                }
+                this.colsp = 0;
+
+                if (this.plandsp < 0) {
+                    this.plandsp *= -1;
+                }
+
+            }
+        }
+
     }
 
     draw() {
-        push()
-        fill('purple');
-        ellipseMode(CORNER);
-        circle(this.spider_x, this.spider_y, this.spider_size);
-        pop()
+        if (this.colsp == 1) {
+            push()
+            fill('purple');
+            ellipseMode(CORNER);
+            circle(this.spider_x, this.spider_y, this.spider_size);
+            pop()
+        }
     }
 }

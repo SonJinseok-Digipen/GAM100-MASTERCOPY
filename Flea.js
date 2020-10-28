@@ -11,6 +11,8 @@ class Flea {
         this.num2 = 0;
         this.wave = 1;
         this.mushroomcount = 0;
+        this.colfl = 1;
+        this.flscore = 0;
     }
 
     update() {
@@ -34,6 +36,8 @@ class Flea {
             this.flea_yspeed = 10;
             this.num = 10;
             this.num2 = 0;
+
+            this.colfl = 1;
 
         }
 
@@ -60,18 +64,29 @@ class Flea {
         for (let i = tilemap1.rows - 3; i < tilemap1.rows; i++) {
             for (let j = 0; j < tilemap1.cols; j++) {
                 if (tilemap1.layers[i][j] == 1) {
-                        this.mushroomcount += 1;
-                    }
+                    this.mushroomcount += 1;
+                }
+            }
+        }
+
+        if (this.colfl == 1) {
+            for (let i = 0; i < player.bullets.length; i++) {
+                if (dist(player.bullets[i].player_attack_x, player.bullets[i].player_attack_y, this.flea_x, this.flea_y) <= 25) {
+                    this.colfl = 0;
+                    this.flscore += 1;
+                }
             }
         }
 
     }
 
     draw() {
-        push()
-        fill('purple');
-        ellipseMode(CORNER);
-        circle(this.flea_x, this.flea_y, this.flea_size);
-        pop()
+        if (this.colfl == 1) {
+            push()
+            fill('purple');
+            ellipseMode(CORNER);
+            circle(this.flea_x, this.flea_y, this.flea_size);
+            pop()
+        }
     }
 }
