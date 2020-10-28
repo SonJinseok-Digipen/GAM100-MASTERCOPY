@@ -14,7 +14,7 @@ class Player {
         this.bullets = [];
 
         this.colc = 1;
-        this.player_life = 3;
+        this.player_life = 2;
     }
 
     update() {
@@ -101,9 +101,9 @@ class Player {
             }
         }
 
-
-
-
+        if(scores.scnum == 1){
+          this.player_life = 2;
+        }
 
 
 

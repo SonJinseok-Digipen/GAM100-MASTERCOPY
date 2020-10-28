@@ -1,6 +1,6 @@
 class scolpion {
     constructor() {
-        this.scolpion_randomy1 = random(1, 13);
+        this.scolpion_randomy1 = random(3, 13);
         this.scolpion_randomy2;
         this.scolpion_randomx1 = random(3, 15);
         this.scolpion_randomx2;
@@ -20,7 +20,7 @@ class scolpion {
         }
         if (800 < this.scolpion_x) {
 
-            this.scolpion_randomy2 = random(1, 13);
+            this.scolpion_randomy2 = random(3, 13);
             this.scolpion_randomx2 = random(3, 10);
 
             this.scolpion_x = -1 * int(this.scolpion_randomx2) * 25;

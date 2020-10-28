@@ -35,8 +35,8 @@ class spider {
         //     this.spider_random3 = random(0, 4);
         // }
 
-        if (400 <= this.spider_y && this.spider_y <= 725) {
-            if (this.spider_y == 550) {
+        if (500 <= this.spider_y && this.spider_y <= 725) {
+            if (this.spider_y == 600) {
                 this.spider_checkdown = 0;
                 this.spider_checkup = 0;
             }
