@@ -1,3 +1,11 @@
+/*File Name: Mushroom.js
+   Project Name: Centipede
+   The course name: GAM100
+   The term: Fall 2020
+   Author(s): 
+
+   All content © 2020 DigiPen (USA) Corporation, all rights reserved.*/
+
 class Mushroom
 {
   constructor(x, y){
@@ -44,5 +52,3 @@ this.posy + this.size == player.bullets[i].player_attack_y && this.life > 0)
 }
 
 }
-/*if(this.posx <= player.bullets[i].player_attack_x && this.posx + this.size >= player.bullets[i].player_attack_x && 
-this.posy == player.bullets[i].player_attack_y && player_bullet.isbulletexist == true)*/
