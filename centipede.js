@@ -433,4 +433,3 @@ switch(this.track.posy)
  }
 
 }
-
