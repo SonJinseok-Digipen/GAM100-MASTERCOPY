@@ -1,14 +1,29 @@
+/*File Name: Play.js
+   Project Name: Centipede
+   The course name: GAM100
+   The term: Fall 2020
+   Author(s): 
+
+   All content © 2020 DigiPen (USA) Corporation, all rights reserved.*/
+
 class Play {
     constructor() {
-        frameRate(10);
+      
     }
 
-    Update() {
-        centipede1.Update();
+  Update() {
+         centipede1.Update();
         tail1.Update();
+        
+        
         tail2.Update();
+        
         tail3.Update();
+        mushmap.update();
+        /*
+
         tail4.Update();
+        
         tail5.Update();
         tail6.Update();
         tail7.Update();
@@ -16,25 +31,26 @@ class Play {
         tail9.Update();
         tail10.Update();
         tail11.Update();
-        flea1.update();
-        scolpion1.update();
-        spider1.update();
-        mushmap.update();
+    haed2.Update()
+    */
+ 
+
+
         player.update();
-        player_bullet.update();
-        scores.update();
     }
 
     Draw() {
         drawgrid();
-        mushmap.draw();
-        player.draw();
-        player_bullet.draw();
+        tilemap1.Show();
         centipede1.Show();
         tail1.Show();
         tail2.Show();
+        mushmap.draw();
+              /*
         tail3.Show();
+        
         tail4.Show();
+        
         tail5.Show();
         tail6.Show();
         tail7.Show();
@@ -42,9 +58,17 @@ class Play {
         tail9.Show();
         tail10.Show();
         tail11.Show();
-        flea1.draw();
-        scolpion1.draw();
-        spider1.draw();
-        scores.draw();
+          
+        haed2.Show()
+
+    /*
+    haed3.Show()
+    
+    haed4.Show()
+    haed5.Show()
+    haed6.Show()
+    */
+
+        player.draw();
     }
 }

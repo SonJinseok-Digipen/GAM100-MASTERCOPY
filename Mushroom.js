@@ -52,3 +52,5 @@ this.posy + this.size == player.bullets[i].player_attack_y && this.life > 0)
 }
 
 }
+/*if(this.posx <= player.bullets[i].player_attack_x && this.posx + this.size >= player.bullets[i].player_attack_x && 
+this.posy == player.bullets[i].player_attack_y && player_bullet.isbulletexist == true)*/

@@ -1,124 +1,101 @@
-class Player {
-    constructor() {
-        this.player_size = 25;
-        this.player_x = width / 2;
-        this.player_y = height - this.player_size;
-        this.map_boundary_x = width - 25;
-        this.map_boundary_y = height - 175;
-        this.player_velocity = 25;
-        this.player_acceleration = 1;
-        this.player_max_velocity = 40;
-        this.isthiskeypressed = false;
-        //this.bullet = new bullet(this.player_x, this.player_y);
-        //this.spider1 = new spider();
-        this.bullets = [];
+/*File Name: Player.js
+   Project Name: Centipede
+   The course name: GAM100
+   The term: Fall 2020
+   Author(s): 
 
-        this.colc = 1;
-        this.player_life = 3;
+   All content © 2020 DigiPen (USA) Corporation, all rights reserved.*/
+
+class Player{
+  constructor(mushmap){
+    this.player_size = 25;
+    this.player_x = width / 2;
+    this.player_y = height - this.player_size;
+    this.map_boundary_x = width - 25;
+    this.map_boundary_y = height - 175;
+    this.player_velocity = 25;
+    this.player_acceleration = 1;
+    this.player_max_velocity = 40;
+    this.isthiskeypressed = false;
+    this.bullets=[];
+    
+
     }
-
-    update() {
-
-        if (keyIsPressed) {
-            if (key == 'c') {
-                if(this.bullets.length < 1){
-                  this.bullets.push(new bullet(this.player_x, this.player_y));  
-                }
-                //this.isthiskeypressed = true;
-                
-            }
-            if (keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x) {
-                this.player_x += this.player_velocity;
-                if (this.player_x < this.map_boundary_x && this.player_x > 0) {
-                    this.player_velocity += this.player_acceleration;
-                }
-                if (this.player_x + this.player_velocity > this.map_boundary_x) {
-                    this.player_x = this.map_boundary_x;
-                    this.player_velocity = 25;
-                }
-                /*if(this.player_velocity > this.player_max_velocity){
-                  this.player_velocity = this.player_max_velocity;
-                  this.player_acceleration = 0;
-                }*/
-
-            }
-            if (keyCode == LEFT_ARROW && this.player_x > 0) {
-                this.player_x -= this.player_velocity;
-                if (this.player_x < this.map_boundary_x && this.player_x > 0) {
-                    this.player_velocity += this.player_acceleration;
-                }
-                if (this.player_x - this.player_velocity < 0) {
-                    this.player_x = 0;
-                    this.player_velocity = 25;
-                }
-
-                /*if(this.player_velocity > this.player_max_velocity){
-                  this.player_velocity = this.player_max_velocity;
-                  this.player_acceleration = 0;
-                }*/
-            }
-            if (keyCode == UP_ARROW && this.player_y > this.map_boundary_y) {
-                this.player_y -= this.player_velocity;
-                /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
+  
+  update(){
+   
+     if(keyIsPressed)
+    {
+      if(key == 'c'){
+        if(this.bullets.length<1)
+        {
+          //총알 생성위치 결정 
+         this.bullets.push(new bullet(this.player_x,this.player_y));
+        }
+      }
+       if(keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x)
+      {
+        this.player_x += this.player_velocity;
+        if(this.player_x < this.map_boundary_x && this.player_x > 0){
+          this.player_velocity += this.player_acceleration;
+        }
+        if(this.player_x + this.player_velocity > this.map_boundary_x){
+          this.player_x = this.map_boundary_x;
+          this.player_velocity = 25;
+        }
+        /*if(this.player_velocity > this.player_max_velocity){
+          this.player_velocity = this.player_max_velocity;
+          this.player_acceleration = 0;
+        }*/
+        
+      }if(keyCode == LEFT_ARROW && this.player_x > 0)
+      {
+        this.player_x -= this.player_velocity;
+        if(this.player_x < this.map_boundary_x && this.player_x > 0){
+          this.player_velocity += this.player_acceleration;
+        }
+        if(this.player_x - this.player_velocity < 0){
+          this.player_x = 0;
+          this.player_velocity = 25;
+        }
+        
+        /*if(this.player_velocity > this.player_max_velocity){
+          this.player_velocity = this.player_max_velocity;
+          this.player_acceleration = 0;
+        }*/
+      }
+      if(keyCode == UP_ARROW && this.player_y > this.map_boundary_y)
+      {
+        this.player_y -= this.player_velocity;
+         /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
           this.player_velocity += this.player_acceleration;
         }*/
-                if (this.player_y - this.player_velocity < this.map_boundary_y) {
-                    this.player_y = this.map_boundary_y;
-                    this.player_velocity = 25;
-                }
-            }
-            if (keyCode == DOWN_ARROW && this.player_y < height - 25) {
-                this.player_y += this.player_velocity;
-                /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
-                  this.player_velocity += this.player_acceleration;
-                }*/
-                if (this.player_y + this.player_velocity > height - 25) {
-                    this.player_y = height - 25;
-                    this.player_velocity = 25;
-                }
-            }
-        } else {
-            this.player_velocity = 25;
+        if(this.player_y - this.player_velocity < this.map_boundary_y){
+          this.player_y = this.map_boundary_y;
+          this.player_velocity = 25;
         }
-
-
-        //충돌
-        if (spider1.colsp == 1) {
-            if (dist(spider1.spider_x, spider1.spider_y, this.player_x, this.player_y) <= 25) {
-                this.colc = 0;
-            }
+      }
+      if(keyCode == DOWN_ARROW && this.player_y < height - 25)
+      {
+        this.player_y += this.player_velocity;
+        /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
+          this.player_velocity += this.player_acceleration;
+        }*/
+        if(this.player_y + this.player_velocity > height - 25){
+          this.player_y = height - 25;
+          this.player_velocity = 25;
         }
-        if (flea1.colfl == 1) {
-            if (dist(flea1.flea_x, flea1.flea_y, this.player_x, this.player_y) <= 25) {
-                this.colc = 0;
-            }
-        }
+      }
+    }else{
+      this.player_velocity = 25;
+    } 
 
-        //죽음
-        if (player.colc == 0) {
-            push()
-            if(frameCount % 5 == 0){
-                fill('green')
-                tilemap1.Show();
-            }
-            pop()
-
-          //죽고 생성되는 부분
-            if (frameCount % 10 == 0) {
-                this.player_life -= 1;
-                this.colc = 1;
-            }
-        }
+    
 
 
 
-
-
-
-
-
-        ///////////////////////////////////////총알
-        for(let i=0; i<this.bullets.length; i++)
+//총알 업데이트
+    for(let i=0; i<this.bullets.length; i++)
    {
       this.bullets[i].update();
       if(this.bullets[i].player_attack_y + 50 <25)
@@ -128,27 +105,18 @@ class Player {
 
     } 
 
-        // for (let i = 0; i < this.bullets.length; i++) {
-        //     this.bullets[i].update();
+}
+  
+  draw(){
+    push()
+    fill('gold');
+    rect(this.player_x, this.player_y, this.player_size, this.player_size)
+    pop()
 
-        // }
-
+//총알 그리는 부분
+   for(let i=0; i<this.bullets.length; i++)
+    {
+      this.bullets[i].draw();
     }
-
-    draw() {
-        if (this.colc == 1 && this.player_life >= 0) {
-            push()
-            fill('gold');
-            rect(this.player_x, this.player_y, this.player_size, this.player_size)
-            pop()
-
-            //총알 그리는 부분
-            for (let i = 0; i < this.bullets.length; i++) {
-                this.bullets[i].draw();
-            }
-        }
-        // for (let i = 0; i < this.bullets.length; i++) {
-        //     this.bullets[i].draw();
-        // }
-    }
+  }
 }
