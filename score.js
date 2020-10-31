@@ -55,7 +55,7 @@ class score {
         if (this.dietxt == 1) {
             push();
             textSize(40);
-            fill('black');
+            fill('Yellow');
             text('Game Over', 300, 400);
             pop();
         }
