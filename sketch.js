@@ -30,6 +30,7 @@ let player;
 let Mushroom1;
 let player_bullet;
 let scores;
+let fleas;
 
 function preload() {
     main_menu = loadImage('Asset/unknown.png');
@@ -69,7 +70,7 @@ function setup() {
     tail10 = new centipedetale2(tail9);
     tail11 = new centipedetale2(tail10);
     haed2 = new centipedeHead(0, 0);
-
+    fleas=[];
     flea1 = new Flea();
     spider1 = new spider();
     scolpion1 = new scolpion();
@@ -78,7 +79,7 @@ function setup() {
     mushmap = new Mushmap(tilemap1);
     scores = new score();
     mushmap.Initialize();
-
+   
    
 
 
@@ -114,4 +115,28 @@ function drawgrid() {
         }
 
     }
+}
+
+function spawnflea()
+{
+
+for (let i = tilemap1.rows - 5; i < tilemap1.rows; i++)
+    {
+    for (let j = 0; j < tilemap1.cols; j++)
+     {
+      fleas.push(new Flea());
+     }
+ }
+
+     for(let i=0; i<10; i++)
+     {
+        fleas[i].update();
+       
+     }
+      for(let i=0; i<10; i++)
+     {
+        fleas[i].draw();
+       
+     }
+
 }

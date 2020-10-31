@@ -20,6 +20,7 @@ class Mushroom {
         }
         if (this.life == 0) {
             mushmap.mscore += 1;
+             tilemap1.layers[this.posy/25][this.posx/25]=0;
             this.isdie = true;
         }
 

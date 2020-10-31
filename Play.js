@@ -24,7 +24,7 @@ class Play {
         tail10.Update();
         tail11.Update();
         */
-        flea1.update();
+        spawnflea();
         scolpion1.update();
         spider1.update();
         mushmap.update();
