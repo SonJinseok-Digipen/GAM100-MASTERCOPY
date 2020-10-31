@@ -38,6 +38,30 @@ class Mushroom
     square(this.posx,this.posy,this.size);
     pop()
    }
+   //색깔에 따라서 버섯상태에 대한 이미지를 넣어줘야함
+   if(this.life==3)
+   {
+    push()
+    fill(255,0,0);
+    square(this.posx,this.posy,this.size);
+    pop()
+   }
+     //색깔에 따라서 버섯상태에 대한 이미지를 넣어줘야함
+    if(this.life==2)
+   {
+    push()
+    fill(0,255,0);
+    square(this.posx,this.posy,this.size);
+    pop()
+   }
+   //색깔에 따라서 버섯상태에 대한 이미지를 넣어줘야함
+    if(this.life==1)
+   {
+    push()
+    fill(50,120,30);
+    square(this.posx,this.posy,this.size);
+    pop()
+   }
   
  
 
