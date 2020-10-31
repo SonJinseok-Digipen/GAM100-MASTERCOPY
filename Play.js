@@ -24,13 +24,14 @@ class Play {
         tail10.Update();
         tail11.Update();
         */
-        spawnflea();
+        //spawnflea();
         scolpion1.update();
         spider1.update();
         mushmap.update();
         player.update();
         player_bullet.update();
         scores.update();
+        flea1.update();
     }
 
     Draw() {
@@ -52,6 +53,7 @@ class Play {
         tail9.Show();
         tail10.Show();
         tail11.Show();
+        //spawnflea();
         flea1.draw();
         scolpion1.draw();
         spider1.draw();
