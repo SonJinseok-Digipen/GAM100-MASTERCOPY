@@ -45,7 +45,8 @@ class scolpion {
             for (let i = 0; i < player.bullets.length; i++) {
                 if (dist(player.bullets[i].player_attack_x, player.bullets[i].player_attack_y, this.scolpion_x, this.scolpion_y) <= 25) {
                     this.colsc = 0;
-                    this.scscore += 1;
+                    this.scscore += 1000;
+                    player.bullets.pop();
                 }
             }
         }
@@ -54,11 +55,12 @@ class scolpion {
 
     draw() {
         if (this.colsc == 1) {
-            push()
+            /*push()
             fill('purple');
             ellipseMode(CORNER);
             circle(this.scolpion_x, this.scolpion_y, this.scolpion_size);
-            pop()
+            pop()*/
+            image(scolpion_art ,this.scolpion_x, this.scolpion_y, this.scolpion_size * 2);
         }
     }
 }

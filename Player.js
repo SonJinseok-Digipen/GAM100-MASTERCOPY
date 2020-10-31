@@ -1,5 +1,5 @@
 class Player {
-    constructor() {
+    constructor(mushmap) {
         this.player_size = 25;
         this.player_x = width / 2;
         this.player_y = height - this.player_size;
@@ -9,8 +9,6 @@ class Player {
         this.player_acceleration = 1;
         this.player_max_velocity = 40;
         this.isthiskeypressed = false;
-        //this.bullet = new bullet(this.player_x, this.player_y);
-        //this.spider1 = new spider();
         this.bullets = [];
 
         this.colc = 1;
@@ -20,9 +18,11 @@ class Player {
     update() {
 
         if (keyIsPressed) {
-            if (key == 'c') {
-                this.isthiskeypressed = true;
-                this.bullets.push(new bullet(this.player_x, this.player_y));
+            if (key == 'c' || key=='C') {
+                if (this.bullets.length < 1) {
+                    //총알 생성위치 결정 
+                    this.bullets.push(new bullet(this.player_x, this.player_y));
+                }
             }
             if (keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x) {
                 this.player_x += this.player_velocity;
@@ -78,7 +78,6 @@ class Player {
             this.player_velocity = 25;
         }
 
-
         //충돌
         if (spider1.colsp == 1) {
             if (dist(spider1.spider_x, spider1.spider_y, this.player_x, this.player_y) <= 25) {
@@ -94,49 +93,39 @@ class Player {
         //죽음
         if (player.colc == 0) {
 
-          //죽고 생성되는 부분
+            //죽고 생성되는 부분
             if (frameCount % 10 == 0) {
                 this.player_life -= 1;
                 this.colc = 1;
             }
         }
 
-        if(scores.scnum == 1){
-          this.player_life = 2;
+        if (scores.scnum == 1) {
+            this.player_life = 2;
         }
 
 
 
 
-        ///////////////////////////////////////총알
+
+        //총알 업데이트
         for (let i = 0; i < this.bullets.length; i++) {
             this.bullets[i].update();
-            if (this.bullets[this.bullets.length - 1].player_attack_y < 30) {
+            if (this.bullets[i].player_attack_y + 50 < 25) {
                 this.bullets.pop();
             }
+
         }
-
-        // for (let i = 0; i < this.bullets.length; i++) {
-        //     this.bullets[i].update();
-
-        // }
 
     }
 
     draw() {
         if (this.colc == 1 && this.player_life >= 0) {
-            push()
-            fill('gold');
-            rect(this.player_x, this.player_y, this.player_size, this.player_size)
-            pop()
-
+            image(player_art, this.player_x, this.player_y, this.player_size)
             //총알 그리는 부분
             for (let i = 0; i < this.bullets.length; i++) {
                 this.bullets[i].draw();
             }
         }
-        // for (let i = 0; i < this.bullets.length; i++) {
-        //     this.bullets[i].draw();
-        // }
     }
 }
