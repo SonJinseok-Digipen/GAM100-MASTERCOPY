@@ -4,6 +4,7 @@ class Mushmap
   {
     this.tilemap=tilemap;
     this.Mushrooms=[];
+    this.mscore = 0;
     
   }
 
