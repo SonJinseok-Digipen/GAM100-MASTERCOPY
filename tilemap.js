@@ -1,11 +1,3 @@
-/*File Name: tilempa.js
-   Project Name: Centipede
-   The course name: GAM100
-   The term: Fall 2020
-   Author(s): 
-
-   All content © 2020 DigiPen (USA) Corporation, all rights reserved.*/
-
 //This code made by Jinseok Son
 //Do not change any of this Code If you can't understand how this code work
 
@@ -36,7 +28,7 @@ class Mushroom_tilemap
  
     for(let i=0; i<32; i++)
     {
-    this.layers[int(random(3,this.rows))][int(random(1,this.cols-1))]=1;
+    this.layers[int(random(3, this.rows))][int(random(0, this.cols))] = new Mushroom(int(random(3, this.rows) * 25),int(random(0, this.cols) * 25));
     }
     
 

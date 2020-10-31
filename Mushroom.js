@@ -1,11 +1,3 @@
-/*File Name: Mushroom.js
-   Project Name: Centipede
-   The course name: GAM100
-   The term: Fall 2020
-   Author(s): 
-
-   All content © 2020 DigiPen (USA) Corporation, all rights reserved.*/
-
 class Mushroom
 {
   constructor(x, y){
@@ -24,7 +16,7 @@ class Mushroom
       for(let i=0; i<player.bullets.length; i++)
       {
         if(this.posx <= player.bullets[i].player_attack_x && this.posx + this.size >= player.bullets[i].player_attack_x && 
-this.posy + this.size == player.bullets[i].player_attack_y && this.life > 0)
+         this.posy + this.size == player.bullets[i].player_attack_y && this.life > 0)
         {
           this.life=this.life-1;
           player.bullets.pop();
@@ -41,12 +33,25 @@ this.posy + this.size == player.bullets[i].player_attack_y && this.life > 0)
   {
     if(this.isdie==false)
     {
-    push()
-    fill('cyan');
-    square(this.posx,this.posy,this.size);
-    pop()
+      if(this.life == 4){
+        image(full_mushroom_art, this.posx, this.posy, this.size);
+      }
+   //색깔에 따라서 버섯상태에 대한 이미지를 넣어줘야함
+   if(this.life==3)
+   {
+    image(worn_mushroom_art, this.posx, this.posy, this.size);
    }
-  
+     //색깔에 따라서 버섯상태에 대한 이미지를 넣어줘야함
+    if(this.life==2)
+   {
+    image(damaged_mushroom_art, this.posx, this.posy, this.size);
+   }
+   //색깔에 따라서 버섯상태에 대한 이미지를 넣어줘야함
+    if(this.life==1)
+   {
+    image(badly_damaged_mushroom_art, this.posx, this.posy, this.size);
+   }
+  }
  
 
 }

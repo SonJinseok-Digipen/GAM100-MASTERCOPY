@@ -1,11 +1,3 @@
-/*File Name: Mushmap.js
-   Project Name: Centipede
-   The course name: GAM100
-   The term: Fall 2020
-   Author(s): 
-
-   All content © 2020 DigiPen (USA) Corporation, all rights reserved.*/
-
 class Mushmap
 {
   constructor(tilemap)
