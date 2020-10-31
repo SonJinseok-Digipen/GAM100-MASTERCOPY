@@ -15,18 +15,19 @@ class Mushroom
 
       for(let i=0; i<player.bullets.length; i++)
       {
-        if(dist(player.bullets[i].player_attack_x,player.bullets[i].player_attack_y,this.posx,this.posy)<25)
+        if(this.posx <= player.bullets[i].player_attack_x && this.posx + this.size >= player.bullets[i].player_attack_x && 
+         this.posy + this.size == player.bullets[i].player_attack_y && this.life > 0)
         {
           this.life=this.life-1;
           player.bullets.pop();
         }
       }
-         if(this.life<=0)
+         if(this.life==0)
          {
           this.isdie=true;
          }
+
    }
-   
 
   draw()
   {
@@ -43,3 +44,5 @@ class Mushroom
 }
 
 }
+/*if(this.posx <= player.bullets[i].player_attack_x && this.posx + this.size >= player.bullets[i].player_attack_x && 
+this.posy == player.bullets[i].player_attack_y && player_bullet.isbulletexist == true)*/

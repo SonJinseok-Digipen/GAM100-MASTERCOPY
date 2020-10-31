@@ -10,12 +10,17 @@ class centipedeHead
    this.yspeed=0;
    this.direction1=true;
    this.direction2=false;
-   this.searcharea=tilemap1.layers[(this.posy)/25][(this.posx+(this.xspeed))/25];
+   this.searcharea1=tilemap1.layers[(this.posy)/25][(this.posx+(this.xspeed))/25];
    this.searcharea2=tilemap1.layers[(this.posx)/25][(this.posx-this.xspeed)/25];  
+   this.isdie=false;
    }
 
  Update()
  {
+ this.searcharea1=tilemap1.layers[(this.posy)/25][(this.posx+(this.xspeed))/25]; 
+ this.searcharea2=tilemap1.layers[(this.posy)/25][(this.posx-this.xspeed)/25];  
+
+
 if(this.direction1)
 {
   switch(this.posy)
@@ -144,13 +149,13 @@ if(this.direction1)
    break;
    }
  
-  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25)||this.searcharea!=0)
+  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25)||this.searcharea1!=0)
   {
     this.yspeed=25;
     this.xspeed=0;
+ } 
 
-  } 
- 
+
 }
 if(this.direction2)
 {
@@ -183,18 +188,31 @@ if(this.direction2)
    break;
    }
  
-  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25)||this.searcharea!=0)
+  if((this.posx==725 &&this.xspeed==25) || (this.posx==0 && this.xspeed==-25)||this.searcharea2!=0)
   {
     this.yspeed=-25;
     this.xspeed=0;
   } 
+
+
  
 }
+ this.posx=this.posx+this.xspeed;
+ this.posy=this.posy+this.yspeed;
+
+
+
+ for(let i=0; i<player.bullets.length; i++)
+  {
+     if(dist(this.posx+12.5,this.posy+12.5,player.bullets[i].player_attack_x,player.bullets[i].player_attack_y)<=15)
+     {
+     this.isdie=true;
+      }
+
+  }
   
-   this.posx=this.posx+this.xspeed;
-   this.posy=this.posy+this.yspeed;
-   this.searcharea=tilemap1.layers[(this.posy)/25][(this.posx+(this.xspeed))/25]; 
-  this.searcharea2=tilemap1.layers[(this.posy)/25][(this.posx-this.xspeed)/25];  
+ 
+
 
     
   
@@ -202,10 +220,19 @@ if(this.direction2)
  
  Show()
 {  
+    if(this.isdie==false)
+    {
     push();
     fill(255,0,0);
     rect(this.posx,this.posy,25,25);
     pop();
+   }
+   else
+   {
+    return 0;
+   }
+
+
  }
 
 
@@ -219,31 +246,70 @@ class centipedetale1
    this.track=track;
    this.tail=[];
    this.total=1;
-   this.posx=this.track.posx-(centipede1.xspeed)*1;
-   this.posy=this.track.posy-(centipede1.yspeed)*1;
+   this.posx=this.track.posx-(this.track.xspeed)*1;
+   this.posy=this.track.posy-(this.track.yspeed)*1;
    this.xspeed=this.track.xspeed;
    this.yspeed=this.track.yspeed;
+   this.isdie==false;
+   this.searcharea1=tilemap1.layers[(this.posy)/25][(this.posx+(this.xspeed))/25]; 
+   this.searcharea2=tilemap1.layers[(this.posy)/25][(this.posx-this.xspeed)/25];  
  }
 
  Update()
   {
-   this.posx=this.track.posx-centipede1.xspeed;
-   this.posy=this.track.posy-centipede1.yspeed;
+   this.posx=this.track.posx-this.track.xspeed;
+   this.posy=this.track.posy-this.track.yspeed;
+   if(this.searcharea1!=0)
+   {
+    this.xspeed=0;
+    this.yspeed=0;
+   }
+  for(let i=0; i<player.bullets.length; i++)
+  {
+     if(dist(this.posx+12.5,this.posy+12.5,player.bullets[i].player_attack_x,player.bullets[i].player_attack_y)<=15)
+     {
+     this.isdie=true;
+    
+    }
+
   }
+
+}
 
   
  Show()
  {
-      
+
+    if(this.isdie==true)
+    {
+      return;
+    }
+
+    if(this.track.isdie==true)
+    {
+    push();
+    fill(255,0,0);
+    rect(this.posx,this.posy,25,25);
+    pop();
+    }
+    else
+    {
     push();
     fill(0,255,0);
     rect(this.posx,this.posy,25,25);
-    //console.log(this.track.posx,this.track.posy,this.posx,this.posy);
     pop();
+    }
 
- }
+    
+     
+
+
+
+  }
 
 }
+
+
 
 class centipedetale2
 {
@@ -257,6 +323,8 @@ class centipedetale2
    this.yspeed=this.track.yspeed;
    this.track.direction1=true;
    this.track.direction2=false;
+   this.isdie=false;
+
   }
 
  Update()
@@ -406,18 +474,30 @@ switch(this.track.posy)
    this.track.yspeed=0;
    this.track.xspeed=25;
    break;
+  
    }
    
 
  
-    if((this.track.posx==725 &&this.track.xspeed==25) || (this.track.posx==0 && this.track.xspeed==-25))
+  if((this.track.posx==725 &&this.track.xspeed==25) || (this.track.posx==0 && this.track.xspeed==-25))
   {
 
     this.track.yspeed=25;
     this.track.xspeed=0;
   }
 
+    for(let i=0; i<player.bullets.length; i++)
+  {
+     if(dist(this.posx+12.5,this.posy+12.5,player.bullets[i].player_attack_x,player.bullets[i].player_attack_y)<=15)
+     {
+     this.isdie=true;
+     console.log("sex");
+  }
+
+ 
+
  }
+}
 
 
 
@@ -425,11 +505,30 @@ switch(this.track.posy)
 
  Show()
  {  
+
+    
+    if(this.isdie==true)
+    {
+      return 0;
+    }
+
+
+    else if(this.track.isdie==true)
+    {
+    push();
+    fill(255,0,0);
+    rect(this.posx,this.posy,25,25);
+    pop();
+    }
+    else
+    {
     push();
     fill(0,255,0);
     rect(this.posx,this.posy,25,25);
-    //console.log(this.track.posx,this.track.posy,this.posx,this.posy);
     pop();
+    }
+
+
  }
 
 }
