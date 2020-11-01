@@ -18,19 +18,6 @@ class Flea {
 
         this.mtrue = 0;
 
-        for (let i = tilemap1.rows - 5; i < tilemap1.rows; i++) {
-            for (let j = 0; j < tilemap1.cols; j++) {
-                if (tilemap1.layers[i][j] != 0) {
-                    this.mushroomcount += 1;
-                }
-            }
-        }
-
-    }
-
-    update() {
-        // this.flea_y += this.flea_speed;
-
         // for (let i = tilemap1.rows - 5; i < tilemap1.rows; i++) {
         //     for (let j = 0; j < tilemap1.cols; j++) {
         //         if (tilemap1.layers[i][j] != 0) {
@@ -39,11 +26,23 @@ class Flea {
         //     }
         // }
 
-        this.flmush_random = random(0, 4);
+    }
 
-        if (this.mushroomcount < 10) {
+    update() {
+        if (frameCount % 60 == 0) {
+            for (let i = tilemap1.rows - 5; i < tilemap1.rows; i++) {
+                for (let j = 0; j < tilemap1.cols; j++) {
+                    if (tilemap1.layers[i][j] != 0) {
+                        this.mushroomcount += 1;
+                    }
+                }
+            }
+        }
+        if (this.mushroomcount > 10) {
             this.num2 += 1;
         }
+
+        this.flmush_random = random(0, 4);
 
         if (2 <= this.wave && this.num2 > 0) {
             this.flea_y += this.flea_speed;
@@ -51,7 +50,7 @@ class Flea {
             for (let i = 0; i < mushmap.Mushrooms.length; i++) {
                 if (dist(mushmap.Mushrooms[i].posx, mushmap.Mushrooms[i].posy, this.flea_x, this.flea_y) <= 25) {
                     this.mtrue = 1;
-                }else{
+                } else {
                     this.mtrue = 0;
                 }
             }
@@ -68,7 +67,7 @@ class Flea {
             this.flea_y = -75;
             this.flea_yspeed = 5;
             this.num = 10;
-            // this.mushroomcount = 0;
+            this.mushroomcount = 0;
             this.num2 = 0;
 
             this.colfl = 1;
