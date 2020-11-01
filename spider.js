@@ -20,10 +20,10 @@ class spider {
 
         if (int(this.spider_random2) == 0) {
             this.spider_x = 0;
-            this.spider_xspeed = 10;
+            this.spider_xspeed = 5;
         } else {
             this.spider_x = 725;
-            this.spider_xspeed = -10;
+            this.spider_xspeed = -5;
         }
     }
 
@@ -35,46 +35,46 @@ class spider {
         //     this.spider_random3 = random(0, 4);
         // }
 
-        if (500 <= this.spider_y && this.spider_y <= 725) {
+        if (525 <= this.spider_y && this.spider_y <= 725) {
             if (this.spider_y == 600) {
                 this.spider_checkdown = 0;
                 this.spider_checkup = 0;
             }
             if (int(this.spider_random3) == 0) {
                 if (this.spider_checkdown == 0) {
-                    this.spider_yspeed = 10;
+                    this.spider_yspeed = 5;
                 } else {
-                    this.spider_yspeed = -10;
+                    this.spider_yspeed = -5;
                 }
                 // this.spider_yspeed = 10;
                 if (int(this.spider_random2) == 0) {
-                    this.spider_xspeed = 10;
+                    this.spider_xspeed = 5;
                 } else {
-                    this.spider_xspeed = -10;
+                    this.spider_xspeed = -5;
                 }
                 if (frameCount % 5 == 0) {
                     this.spider_random3 = random(0, 4);
                 }
             } else if (int(this.spider_random3) == 1) {
                 if (this.spider_checkup == 0) {
-                    this.spider_yspeed = -10;
+                    this.spider_yspeed = -5;
                 } else {
-                    this.spider_yspeed = 10;
+                    this.spider_yspeed = 5;
                 }
                 // this.spider_yspeed = -10;
                 if (int(this.spider_random2) == 0) {
-                    this.spider_xspeed = 10;
+                    this.spider_xspeed = 5;
                 } else {
-                    this.spider_xspeed = -10;
+                    this.spider_xspeed = -5;
                 }
                 if (frameCount % 5 == 0) {
                     this.spider_random3 = random(0, 4);
                 }
             } else if (int(this.spider_random3) == 2) {
                 if (this.spider_checkdown == 0) {
-                    this.spider_yspeed = 10;
+                    this.spider_yspeed = 5;
                 } else {
-                    this.spider_yspeed = -10;
+                    this.spider_yspeed = -5;
                 }
                 // this.spider_yspeed = 10;
                 this.spider_xspeed = 0;
@@ -83,9 +83,9 @@ class spider {
                 }
             } else {
                 if (this.spider_checkup == 0) {
-                    this.spider_yspeed = -10;
+                    this.spider_yspeed = -5;
                 } else {
-                    this.spider_yspeed = 10;
+                    this.spider_yspeed = 5;
                 }
                 // this.spider_yspeed = -10;
                 this.spider_xspeed = 0;
@@ -94,11 +94,11 @@ class spider {
                 }
             }
         } else if (this.spider_y < 400) {
-            this.spider_yspeed = 10;
+            this.spider_yspeed = 5;
             this.spider_checkup = 1;
             this.spider_checkdown = 0;
         } else if (725 < this.spider_y) {
-            this.spider_yspeed = -10;
+            this.spider_yspeed = -5;
             this.spider_checkup = 0;
             this.spider_checkdown = 1;
         }
@@ -110,12 +110,19 @@ class spider {
             if (int(this.spider_random2) == 0) {
                 this.spider_x = 0;
                 this.spider_y = int(this.spider_random4) * 25;
-                this.spider_xspeed = 10;
+                this.spider_xspeed = 5;
             } else {
 
                 this.spider_x = 725;
                 this.spider_y = int(this.spider_random4) * 25;
-                this.spider_xspeed = -10;
+                this.spider_xspeed = -5;
+            }
+        }
+
+        //거미 버섯
+        for (let i = 0; i < mushmap.Mushrooms.length; i++) {
+            if (dist(mushmap.Mushrooms[i].posx, mushmap.Mushrooms[i].posy, this.spider_x, this.spider_y) <= 25) {
+                mushmap.Mushrooms.splice(i,1);
             }
         }
 

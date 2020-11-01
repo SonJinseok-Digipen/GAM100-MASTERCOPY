@@ -30,6 +30,9 @@ let player;
 let Mushroom1;
 let player_bullet;
 let scores;
+//let fleas;
+
+let sl = 0;
 
 function preload() {
     main_menu = loadImage('Asset/unknown.png');
@@ -41,7 +44,9 @@ function preload() {
     worn_mushroom_art = loadImage('Asset/Mushroom2.png');
     damaged_mushroom_art = loadImage('Asset/Mushroom3.png');
     badly_damaged_mushroom_art = loadImage('Asset/Mushroom4.png');
-    poisonous_mushroom_art = loadImage('Asset/Poisonous Mushroom.png');
+    //poisonous_mushroom_art = loadImage('Asset/Poisonous_Mushroom.png');
+    centipede_head_art = loadImage('Asset/Centipede Head.png');
+    centipede_body_art = loadImage('Asset/Centipede Tail.png');
 }
 
 
@@ -51,11 +56,11 @@ function setup() {
     PlayScene = new Play();
     tilemap1 = new Mushroom_tilemap();
     centipede1 = new centipedeHead(0, 100);
-    centipede2=  new centipedeHead(25,100);
+    centipede2 = new centipedeHead(25, 100);
     centipede3 = new centipedeHead(50, 100);
-    centipede4=  new centipedeHead(75,100)
+    centipede4 = new centipedeHead(75, 100)
     centipede5 = new centipedeHead(100, 100);
-    centipede6=  new centipedeHead(125,100)
+    centipede6 = new centipedeHead(125, 100)
 
     tail1 = new centipedetale1(centipede1);
     tail2 = new centipedetale2(tail1);
@@ -69,7 +74,7 @@ function setup() {
     tail10 = new centipedetale2(tail9);
     tail11 = new centipedetale2(tail10);
     haed2 = new centipedeHead(0, 0);
-
+    //fleas = [];
     flea1 = new Flea();
     spider1 = new spider();
     scolpion1 = new scolpion();
@@ -79,7 +84,7 @@ function setup() {
     scores = new score();
     mushmap.Initialize();
 
-   
+
 
 
     frameRate(30);
@@ -115,3 +120,32 @@ function drawgrid() {
 
     }
 }
+
+// function spawnflea() {
+
+//     // for (let i = tilemap1.rows - 5; i < tilemap1.rows; i++) {
+//     //     for (let j = 0; j < tilemap1.cols; j++) {
+//     //         sl += 1;
+//     //         // fleas.push(new Flea());
+//     //     }
+//     // }
+
+    // if (sl <= 10) {
+    //     fleas.push(new Flea());
+    //     for (let i = 0; i < 1; i++) {
+    //         fleas[i].update();
+
+    //     }
+    //     for (let i = 0; i < 1; i++) {
+    //         fleas[i].draw();
+    //     }
+    // }
+//     // for (let i = 0; i < 10; i++) {
+//     //     fleas[i].update();
+
+//     // }
+//     // for (let i = 0; i < 10; i++) {
+//     //     fleas[i].draw();
+//     // }
+
+// }
