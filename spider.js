@@ -17,6 +17,7 @@ class spider {
         this.colsp = 1;
         this.spscore = 0;
         this.plandsp = 0;
+        this.spsd = 0;
 
         if (int(this.spider_random2) == 0) {
             this.spider_x = 0;
@@ -36,6 +37,7 @@ class spider {
         // }
 
         if (525 <= this.spider_y && this.spider_y <= 725) {
+            this.spsd = 1;
             if (this.spider_y == 600) {
                 this.spider_checkdown = 0;
                 this.spider_checkup = 0;
@@ -104,6 +106,7 @@ class spider {
         }
 
         if (this.spider_x < -75 || 800 < this.spider_x) {
+            this.spsd = 0;
             this.colsp = 1;
             this.spider_random2 = random(0, 2);
             this.spider_random4 = random(16, 29);
@@ -131,11 +134,11 @@ class spider {
                 if (this.colsp == 1) {
                     this.plandsp = player.player_y - this.spider_y;
                     if (this.plandsp <= 400) {
-                        this.spscore += 1;
+                        this.spscore += 300;
                         if (this.plandsp <= 100) {
-                            this.spscore += 1;
+                            this.spscore += 300;
                             if (this.plandsp <= 50) {
-                                this.spscore += 1;
+                                this.spscore += 300;
                             }
                         }
                     }
@@ -159,6 +162,11 @@ class spider {
             circle(this.spider_x, this.spider_y, this.spider_size);
             pop()*/
             image(spider_art, this.spider_x, this.spider_y, this.spider_size * 2);
+            if(this.spsd == 1){
+                if(frameCount % 80 == 0){
+                    s1.play();
+                }
+            }  
         }
     }
 }

@@ -69,15 +69,12 @@ class score {
         // pop();
 
         push();
-        fill('white');
+        fill('black');
         rect(0, 0, 800, 75);
         pop();
         for (let i = 0; i < player.player_life; i++) {
             if (player.player_life >= 0) {
-                push();
-                fill('yellow');
-                rect(125 + i * 25, 30, 20, 20);
-                pop();
+                image(player_art, 125 + i * 25, 30, 20)
             }
         }
         push();
@@ -96,7 +93,7 @@ class score {
         if (this.dietxt == 1) {
             push();
             textSize(40);
-            fill('black');
+            fill('yellow');
             text('Game Over', 300, 400);
             pop();
         }

@@ -222,10 +222,11 @@ if(this.direction2)
 {  
     if(this.isdie==false)
     {
-    push();
-    fill(255,0,0);
-    rect(this.posx,this.posy,25,25);
-    pop();
+    //push();
+   // fill(255,0,0);
+    //rect(this.posx,this.posy,25,25);
+    image(centipede_head_art, this.posx, this.posy, 25);
+    //pop();
    }
    else
    {
@@ -287,17 +288,11 @@ class centipedetale1
 
     if(this.track.isdie==true)
     {
-    push();
-    fill(255,0,0);
-    rect(this.posx,this.posy,25,25);
-    pop();
+    image(centipede_head_art, this.posx, this.posy, 25);
     }
     else
     {
-    push();
-    fill(0,255,0);
-    rect(this.posx,this.posy,25,25);
-    pop();
+    image(centipede_body_art, this.posx, this.posy, 25);
     }
 
     
@@ -491,7 +486,6 @@ switch(this.track.posy)
      if(dist(this.posx+12.5,this.posy+12.5,player.bullets[i].player_attack_x,player.bullets[i].player_attack_y)<=15)
      {
      this.isdie=true;
-     console.log("sex");
   }
 
  
@@ -515,17 +509,11 @@ switch(this.track.posy)
 
     else if(this.track.isdie==true)
     {
-    push();
-    fill(255,0,0);
-    rect(this.posx,this.posy,25,25);
-    pop();
+    image(centipede_head_art, this.posx, this.posy, 25);
     }
     else
     {
-    push();
-    fill(0,255,0);
-    rect(this.posx,this.posy,25,25);
-    pop();
+    image(centipede_body_art, this.posx, this.posy, 25);
     }
 
 

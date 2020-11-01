@@ -17,6 +17,14 @@ let poisonous_mushroom_art;
 let centipede_head_art;
 let centipede_body_art;
 
+let s1;
+let s2;
+let s3;
+let s4;
+let s5;
+let s6;
+let s7;
+
 let tilemap1;
 let centipede1;
 let flea1;
@@ -44,7 +52,17 @@ function preload() {
     worn_mushroom_art = loadImage('Asset/Mushroom2.png');
     damaged_mushroom_art = loadImage('Asset/Mushroom3.png');
     badly_damaged_mushroom_art = loadImage('Asset/Mushroom4.png');
-    poisonous_mushroom_art = loadImage('Asset/Poisonous Mushroom.png');
+    //poisonous_mushroom_art = loadImage('Asset/Poisonous_Mushroom.png');
+    centipede_head_art = loadImage('Asset/Centipede Head.png');
+    centipede_body_art = loadImage('Asset/Centipede Tail.png');
+    s1 = loadSound('Asset/spider.mp3');
+    s2 = loadSound('Asset/flea.mp3');
+    s3 = loadSound('Asset/scolpion.mp3');
+    s4 = loadSound('Asset/die.mp3');
+    s5 = loadSound('Asset/bullet.mp3');
+    s6 = loadSound('Asset/lifeup.mp3');
+    s7 = loadSound('Asset/centipede.mp3');
+
 }
 
 

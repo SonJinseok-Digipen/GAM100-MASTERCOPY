@@ -7,16 +7,11 @@ class Player {
         this.map_boundary_y = height - 175;
         this.player_velocity1 = 5;
         this.player_velocity2 = -5;
-        this.player_acceleration1 = 1;
-        this.player_acceleration2 = -1;
+        this.player_acceleration1 = 2;
+        this.player_acceleration2 = -2;
         this.player_max_velocity = 40;
         this.isthiskeypressed = false;
         this.bullets = [];
-
-        this.t1 = 0;
-        this.t2 = 0;
-        this.t3 = 0;
-        this.t4 = 0;
 
         this.colc = 1;
         this.player_life = 2;

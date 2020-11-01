@@ -44,10 +44,7 @@ class Mushroom {
                 image(badly_damaged_mushroom_art, this.posx, this.posy, this.size);
             }
         }
-
-
     }
-
 }
 /*if(this.posx <= player.bullets[i].player_attack_x && this.posx + this.size >= player.bullets[i].player_attack_x && 
 this.posy == player.bullets[i].player_attack_y && player_bullet.isbulletexist == true)*/
