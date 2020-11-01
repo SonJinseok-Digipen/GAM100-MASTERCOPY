@@ -14,7 +14,6 @@
 
           //this.player_attack_x +=  10;
           this.player_attack_y -= 25;
-          console.log(this.player_attack_y)
   }
   draw()
   {

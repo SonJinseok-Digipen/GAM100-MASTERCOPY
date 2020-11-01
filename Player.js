@@ -26,19 +26,26 @@ class Player {
                     this.bullets.push(new bullet(this.player_x, this.player_y));
                 }
             }
-            if (keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x) {
+
+            if (keyCode == RIGHT_ARROW && this.player_x < this.map_boundary_x && this.t1 == 0) {
+                // this.player_x += this.player_velocity1;
                 for (let i = 0; i < mushmap.Mushrooms.length; i++) {
                     if (dist(mushmap.Mushrooms[i].posx, mushmap.Mushrooms[i].posy, this.player_x, this.player_y) <= 25) {
-                        this.player_velocity1 = 0;
+                        this.t1 = 1;
+                        this.t2 = 0;
+                        this.t3 = 0;
+                        this.t4 = 0;
+                    } else {
+                        // this.player_velocity1 = 5;
                     }
                 }
                 this.player_x += this.player_velocity1;
                 if (this.player_x < this.map_boundary_x && this.player_x > 0) {
-                    this.player_velocity += this.player_acceleration;
+                    this.player_velocity1 += this.player_acceleration1;
                 }
-                if (this.player_x + this.player_velocity > this.map_boundary_x) {
+                if (this.player_x + this.player_velocity1 > this.map_boundary_x) {
                     this.player_x = this.map_boundary_x;
-                    this.player_velocity2 = -5;
+                    this.player_velocity1 = 5;
                 }
                 /*if(this.player_velocity > this.player_max_velocity){
                   this.player_velocity = this.player_max_velocity;
@@ -46,19 +53,26 @@ class Player {
                 }*/
 
             }
-            if (keyCode == LEFT_ARROW && this.player_x > 0) {
+            if (keyCode == LEFT_ARROW && this.player_x > 0 && this.t2 == 0) {
+                // this.player_x += this.player_velocity2;
                 for (let i = 0; i < mushmap.Mushrooms.length; i++) {
                     if (dist(mushmap.Mushrooms[i].posx, mushmap.Mushrooms[i].posy, this.player_x, this.player_y) <= 25) {
-                        this.player_velocity2 = 0;
+                        this.t1 = 0;
+                        this.t2 = 1;
+                        this.t3 = 0;
+                        this.t4 = 0;
+                    } else {
+                        // this.player_velocity2 = -5;
                     }
                 }
                 this.player_x += this.player_velocity2;
+
                 if (this.player_x < this.map_boundary_x && this.player_x > 0) {
-                    this.player_velocity += this.player_acceleration;
+                    this.player_velocity2 += this.player_acceleration2;
                 }
-                if (this.player_x - this.player_velocity < 0) {
+                if (this.player_x + this.player_velocity2 < 0) {
                     this.player_x = 0;
-                    this.player_velocity1 = 5;
+                    this.player_velocity2 = -5;
                 }
 
                 /*if(this.player_velocity > this.player_max_velocity){
@@ -66,45 +80,48 @@ class Player {
                   this.player_acceleration = 0;
                 }*/
             }
-            if (keyCode == UP_ARROW && this.player_y > this.map_boundary_y) {
+            if (keyCode == UP_ARROW && this.player_y > this.map_boundary_y && this.t3 == 0) {
+                // this.player_y += this.player_velocity2;
                 for (let i = 0; i < mushmap.Mushrooms.length; i++) {
                     if (dist(mushmap.Mushrooms[i].posx, mushmap.Mushrooms[i].posy, this.player_x, this.player_y) <= 25) {
-                        this.player_velocity2 = 0;
+                        this.t1 = 0;
+                        this.t2 = 0;
+                        this.t3 = 1;
+                        this.t4 = 0;
+                    } else {
+                        // this.player_velocity2 = -5;
                     }
                 }
                 this.player_y += this.player_velocity2;
-                /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
-          this.player_velocity += this.player_acceleration;
-        }*/
-                if (this.player_y - this.player_velocity < this.map_boundary_y) {
+                if (this.player_y + this.player_velocity2 < this.map_boundary_y) {
                     this.player_y = this.map_boundary_y;
-                    this.player_velocity1 = 5;
+                    this.player_velocity2 = -5;
                 }
             }
-            if (keyCode == DOWN_ARROW && this.player_y < height - 25) {
+            if (keyCode == DOWN_ARROW && this.player_y < height - 25 && this.t4 == 0) {
+                // this.player_y += this.player_velocity1;
                 for (let i = 0; i < mushmap.Mushrooms.length; i++) {
                     if (dist(mushmap.Mushrooms[i].posx, mushmap.Mushrooms[i].posy, this.player_x, this.player_y) <= 25) {
-                        this.player_velocity1 = 0;
+                        this.t1 = 0;
+                        this.t2 = 0;
+                        this.t3 = 0;
+                        this.t4 = 1;
+                    } else {
+                        // this.player_velocity1 = 5;
                     }
                 }
                 this.player_y += this.player_velocity1;
-                /*if(this.player_y < this.map_boundary_y && this.player_y > height-25){
-                  this.player_velocity += this.player_acceleration;
-                }*/
-                if (this.player_y + this.player_velocity > height - 25) {
-                    // this.player_y = height - 25;
-                    this.player_velocity2 = -5;
+                if (this.player_y + this.player_velocity1 > height - 25) {
+                    this.player_velocity1 = 5;
                 }
             }
         } else {
             this.player_velocity1 = 5;
+            this.t1 = 0;
+            this.t2 = 0;
+            this.t3 = 0;
+            this.t4 = 0;
         }
-
-        // for (let i = 0; i < mushmap.Mushrooms.length; i++) {
-        //         if (dist(mushmap.Mushrooms[i].posx, mushmap.Mushrooms[i].posy, this.player_x, this.player_y) <= 25) {
-        //             this.this.player_velocity1 = 0;
-        //         }
-        //     }
 
         //충돌
         if (spider1.colsp == 1) {
@@ -122,7 +139,7 @@ class Player {
         if (player.colc == 0) {
 
             //죽고 생성되는 부분
-            if (frameCount % 10 == 0) {
+            if (frameCount % 90 == 0) {
                 this.player_life -= 1;
                 this.colc = 1;
             }

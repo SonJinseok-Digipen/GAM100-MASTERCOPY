@@ -13,15 +13,12 @@ class scolpion {
         this.colsc = 1;
         this.scscore = 0;
         this.mtrue = 0;
-        this.scmush_random;
-        this.a = 1;
-        this.new_scolpion_x;
-        this.new_scolpion_y;
+        //this.scmush_random;
     }
 
     update() {
 
-        this.scmush_random = random(0, 4);
+        //this.scmush_random = random(0, 4);
 
         if (4 <= this.wave && this.num == 0) {
             this.scolpion_x += this.scolpion_speed;
@@ -32,19 +29,20 @@ class scolpion {
                 }else{
                     this.mtrue = 0;
                 }
-                
+            }
+            if (this.colsc == 1 && this.mtrue == 0) {
+                mushmap.Mushrooms.push(new Mushroom(int(this.scolpion_x / 25), this.scolpion_y / 25));
             }
             
         }
         //int(scoplpion_x / 25)
-        console.log(this.a)
         if (800 < this.scolpion_x) {
 
             this.scolpion_randomy2 = random(3, 13);
             this.scolpion_randomx2 = random(3, 10);
 
-           this.new_scolpion_x = -1 * int(this.scolpion_randomx2) * 25;
-            this.new_scolpion_y = int(this.scolpion_randomy2) * 25;
+           this.scolpion_x = -1 * int(this.scolpion_randomx2) * 25;
+            this.scolpion_y = int(this.scolpion_randomy2) * 25;
             this.scolpion_xspeed = 5;
 
             this.colsc = 1;
@@ -61,7 +59,7 @@ class scolpion {
             }
         }
 
-        if (this.colfl == 1) {
+        if (this.colsc == 1) {
             for (let i = 0; i < player.bullets.length; i++) {
                 if (dist(player.bullets[i].player_attack_x, player.bullets[i].player_attack_y, this.scolpion_x, this.scolpion_y) <= 25) {
                     this.colsc = 0;
